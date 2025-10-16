@@ -1,3 +1,4 @@
+accelerate==1.10.1
 annotated-types==0.7.0
 appnope==0.1.4
 asttokens==3.0.0
