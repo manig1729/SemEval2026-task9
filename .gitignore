@@ -1,0 +1,6 @@
+# Ignore Hugging Face model outputs
+saved_model/
+*.bin
+*.json
+*.txt
+*.lock
