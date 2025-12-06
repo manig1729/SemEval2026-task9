@@ -2,9 +2,8 @@ import os
 import random
 
 import numpy as np
-from numpy._core.numeric import True_
-import pandas as pd
 import torch
+import pandas as pd
 
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import f1_score
@@ -21,10 +20,10 @@ from transformers import (
 #                     USER CONFIGURATION
 # ============================================================
 
-INPUT_CSV = "/Users/tejo9855/Documents/Classes/Fall '25/NLP - Martin/Assignments/SemEval2026-task9/teagan_folder/src/output/train_masked.csv"   # path to your training CSV
+INPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/train_aug_groups.csv"   # path to your training CSV
 TEXT_COLUMN = "text"                  # or "masked_text" / "swapped_text"
 LABEL_COLUMN = "polarization"         # 0/1 column
-OUTPUT_DIR = "/Users/tejo9855/Documents/Classes/Fall '25/NLP - Martin/Assignments/SemEval2026-task9/teagan_folder/src/models/masked_model"          # where to save final model
+OUTPUT_DIR = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/llm_aug_model"          # where to save final model
 
 MODEL_NAME = "vinai/bertweet-base"    # HF model name
 MAX_LENGTH = 128
@@ -166,7 +165,7 @@ def main():
         lr_scheduler_type="linear",
         warmup_ratio=WARMUP_RATIO,
         eval_strategy="epoch",
-        save_strategy="no",
+        save_strategy="epoch",
         logging_strategy="epoch",
         load_best_model_at_end=False,  # could set True if you add a metric to monitor
         no_cuda=USE_CPU_ONLY,
@@ -197,6 +196,11 @@ def main():
     print(f"Saving model and tokenizer to: {OUTPUT_DIR}")
     trainer.save_model(OUTPUT_DIR)
     tokenizer.save_pretrained(OUTPUT_DIR)
+
+    log_history = trainer.state.log_history
+    df = pd.DataFrame(log_history)
+    out_path = os.path.join(OUTPUT_DIR, "eval/loss_log_history.csv")
+    df.to_csv(out_path, index=False)
     print("Done.")
 
 

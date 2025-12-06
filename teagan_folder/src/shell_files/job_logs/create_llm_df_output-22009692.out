@@ -1,0 +1,25 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+2025-12-05 23:07:34.419714: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+START MAIN FILE
+Loading data from: /projects/tejo9855/Projects/SemEval2026-task9/data/subtask1/train/eng.csv
+Total polarized examples: 1002
+Polarized examples with group mentions: 391
+Subsampled to 100 examples for augmentation.
+Path to model:  /gpfs/alpine1/llms/hf-transformers/Llama-3.1-8B-Instruct
+Config established!
+Tokenizer loaded!
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:02<00:06,  2.13s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:04<00:04,  2.42s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:07<00:02,  2.35s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:07<00:00,  1.61s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:07<00:00,  1.87s/it]
+Model loaded!
+Starting LLM-based augmentation for polarized group-mention examples...
+[1/100] id=en_a5c10ec4202d6ea9118c80e7e32a0092, label=1, mentions=['Gaza', 'Israel']
+Traceback (most recent call last):
+  File "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/scripts/run_llm_counterfactual_aug.py", line 445, in <module>
+    main()
+  File "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/scripts/run_llm_counterfactual_aug.py", line 404, in main
+    new_texts = call_llm_for_augmentations(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/scripts/run_llm_counterfactual_aug.py", line 313, in call_llm_for_augmentations
+    prompt = build_polarized_prompt(text, mentions, n_aug)
+             ^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'build_polarized_prompt' is not defined

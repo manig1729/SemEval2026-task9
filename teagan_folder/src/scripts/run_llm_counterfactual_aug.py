@@ -2,7 +2,7 @@ import os
 import re
 import json
 import random
-from typing import List, Dict, Any
+from typing import Optional, List, Dict, Any
 
 import torch
 import pandas as pd
@@ -12,13 +12,13 @@ from transformers import (
     BitsAndBytesConfig,
 )
 
-
+print("START MAIN FILE")
 # ============================================================
 #                     USER CONFIGURATION
 # ============================================================
 
-INPUT_CSV = "/Users/tejo9855/Documents/Classes/Fall '25/NLP - Martin/Assignments/SemEval2026-task9/data/subtask1/train/eng.csv"                 # original labeled data
-OUTPUT_CSV = "/Users/tejo9855/Documents/Classes/Fall '25/NLP - Martin/Assignments/SemEval2026-task9/teagan_folder/src/output/train_aug_groups.csv"     # output with augmented rows appended
+INPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/data/subtask1/train/eng.csv"
+OUTPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/train_aug_groups.csv"
 
 ID_COLUMN = "id"
 TEXT_COLUMN = "text"
@@ -31,6 +31,10 @@ RANDOM_SEED = 42
 MAX_NEW_TOKENS = 256
 TEMPERATURE = 0.9
 TOP_P = 0.95
+
+AUGMENTED_COLUMN = "is_augmented"
+ORIGINAL_ID_COLUMN = "original_id_map"
+
 
 # ============================================================
 #                   GROUP/ISSUE REGEX LEXICON
@@ -131,6 +135,45 @@ def load_llama_model():
 #                     HELPER FUNCTIONS
 # ============================================================
 
+def parse_augmented_json(text: str) -> Optional[Dict[str, Any]]:
+    """
+    Given raw model output, try to find and parse one or more JSON objects.
+    Return the most likely one that contains `augmented_texts`.
+
+    Strategy:
+    - Strip code fences.
+    - Find ALL `{ ... }` blocks (non-greedy).
+    - For each block, try json.loads.
+    - Keep the last one that has an "augmented_texts" list.
+    """
+    if not text:
+        return None
+
+    stripped = text.strip()
+
+    # Remove Markdown-style fences, if present
+    fence_match = re.search(r"```(?:json)?(.*)```", stripped, flags=re.DOTALL | re.IGNORECASE)
+    if fence_match:
+        stripped = fence_match.group(1).strip()
+
+    # Find ALL candidate JSON objects
+    candidates = re.finditer(r"\{[\s\S]*?\}", stripped)
+    best_data = None
+
+    for match in candidates:
+        candidate = match.group(0).strip()
+        try:
+            data = json.loads(candidate)
+        except Exception:
+            continue
+
+        # We only care about objects that have "augmented_texts" as a list
+        if isinstance(data, dict) and isinstance(data.get("augmented_texts"), list):
+            best_data = data  # keep the last valid one
+
+    return best_data
+
+
 def find_group_mentions(text: str) -> List[str]:
     """
     Return a list of unique substrings that match the group/issue patterns.
@@ -148,16 +191,24 @@ We are studying polarization in social media posts.
 - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
   usually framing an "us vs them" dynamic, strongly supporting one side and/or
   attacking another.
-- Here, all posts you will see are labeled as POLARIZED (1).
+- Here, all original posts you will see are labeled as POLARIZED (1).
+""".strip()
+
+NON_POLARIZATION_EXPLANATION = """
+We are studying non-polarized variants of polarized social media posts.
+
+- A "non-polarized" post does NOT clearly express a strong, divisive attitude
+  or opinion.
+- It avoids strong "us vs them" dynamics and aggressive attacks.
+- It may still discuss the same topics and groups, but in a neutral, descriptive,
+  or balanced way.
 """.strip()
 
 
-def build_prompt(text: str, mentions: List[str], n_aug: int) -> str:
+def build_polarized_prompt(text: str, mentions: List[str], n_aug: int) -> str:
     """
-    Build an instruction for the LLM to generate n_aug variants:
-    - still polarized
-    - similar stance/topic
-    - but mentioning different (comparable) groups.
+    Given a POLARIZED original post, ask the LLM for n_aug new POLARIZED posts
+    with different but comparable groups.
     """
     mentions_str = ", ".join(f'"{m}"' for m in mentions) if mentions else "none"
 
@@ -175,30 +226,78 @@ def build_prompt(text: str, mentions: List[str], n_aug: int) -> str:
 
         Your task:
         - Generate {n_aug} new posts that:
-        1. Remain clearly POLARIZED (strong, divisive opinion).
-        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
-            but you must change the specific groups, parties, countries,
-            or movements mentioned to DIFFERENT BUT SOCIALLY COMPARABLE ones.
-            For example:
-            - If the original attacks "Democrats", you might attack "Republicans" or "liberals".
-            - If the original talks about one country, you may switch to another country
-                in a similar geopolitical context.
-        3. The intensity of polarization should remain similar (don't turn it neutral).
-        4. Do NOT copy the original sentences; produce genuinely rephrased posts.
-        5. Do NOT mention exactly the same groups/entities as in the original.
-        6. Do NOT add explanations; only return JSON.
+          1. Remain clearly POLARIZED (strong, divisive opinion).
+          2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+             but you must change the specific groups, parties, countries, or movements
+             mentioned to DIFFERENT BUT SOCIALLY COMPARABLE ones.
+             For example:
+             - If the original attacks "Democrats", you might attack "Republicans" or "liberals".
+             - If the original talks about one country, you may switch to another country
+               in a similar geopolitical context.
+          3. The intensity of polarization should remain similar (don't make it neutral).
+          4. Do NOT copy the original sentences; produce genuinely rephrased posts.
+          5. Do NOT mention exactly the same groups/entities as in the original.
+          6. Do NOT add explanations; only return JSON.
 
         Output format (valid JSON):
         {{
-        "augmented_texts": [
+          "augmented_texts": [
             "first new polarized post here",
             "second new polarized post here",
-            ...
-        ]
+            "third new polarized post here"
+          ]
         }}
     """.strip()
 
     return prompt
+
+
+def build_nonpolarized_prompt(text: str, mentions: List[str], n_aug: int) -> str:
+    """
+    Given a POLARIZED original post, ask the LLM for n_aug NON-POLARIZED variants:
+    - same general topic
+    - no strong us-vs-them or harsh attacks
+    - optionally with different but comparable groups.
+    """
+    mentions_str = ", ".join(f'"{m}"' for m in mentions) if mentions else "none"
+
+    prompt = f"""
+        {NON_POLARIZATION_EXPLANATION}
+
+        You will be given a social media post that is labeled as POLARIZED (1),
+        meaning it expresses a strong, divisive attitude.
+
+        Original post:
+        {text}
+
+        Groups or entities mentioned in the original post:
+        [{mentions_str}]
+
+        Your task:
+        - Generate {n_aug} new posts that:
+          1. Are clearly NON-POLARIZED (neutral, balanced, or mildly opinionated).
+          2. Should NOT frame a strong "us vs them" conflict or use aggressive, hostile language.
+          3. Stay roughly on the same topic as the original.
+          4. May still mention social or political groups, parties, countries, etc.,
+             but only in a descriptive, informational, or balanced way.
+          5. You may either:
+             - keep the same groups but soften the tone, OR
+             - switch to DIFFERENT BUT SOCIALLY COMPARABLE groups in a neutral tone.
+          6. Do NOT copy the original sentences; produce genuinely rephrased posts.
+          7. Do NOT add explanations; only return JSON.
+
+        Output format (valid JSON):
+        {{
+          "augmented_texts": [
+            "first new non-polarized post here",
+            "second new non-polarized post here",
+            "third new non-polarized post here"
+          ]
+        }}
+    """.strip()
+
+    return prompt
+
 
 
 def generate_with_llama(
@@ -265,12 +364,20 @@ def call_llm_for_augmentations(
     text: str,
     mentions: List[str],
     n_aug: int,
+    target_label: int,
 ) -> List[str]:
     """
-    Build a prompt, call Llama, parse JSON, return list of augmented texts.
-    On parse failure, return empty list.
+    Build a label-specific prompt (polarized vs non-polarized), call Llama,
+    parse JSON, and return a list of augmented texts.
     """
-    prompt = build_prompt(text, mentions, n_aug)
+
+    if target_label == 1:
+        prompt = build_polarized_prompt(text, mentions, n_aug)
+    elif target_label == 0:
+        prompt = build_nonpolarized_prompt(text, mentions, n_aug)
+    else:
+        raise ValueError(f"Unsupported target_label {target_label}; expected 0 or 1.")
+
     raw_output = generate_with_llama(
         tokenizer,
         model,
@@ -280,19 +387,30 @@ def call_llm_for_augmentations(
         top_p=TOP_P,
     )
 
-    # Try to parse JSON
+    # ---- NEW: parse all candidates, keep the best ----
+    data = parse_augmented_json(raw_output)
+    if data is None:
+        print("Could not find valid JSON with 'augmented_texts'. Raw LLM output:")
+        print(raw_output[:1000])
+        raise RuntimeError("JSON parsing failed for this LLM output.")
+
+
     try:
-        data = json.loads(raw_output)
         aug_texts = data.get("augmented_texts", [])
         aug_texts = [
-            t.strip() for t in aug_texts
+            t.strip()
+            for t in aug_texts
             if isinstance(t, str) and t.strip()
         ]
         return aug_texts[:n_aug]
     except Exception as e:
-        print("JSON parse failed. Error:", e)
-        print("Raw LLM output:\n", raw_output[:1000])
-        return []
+        print("Post-processing parsed JSON failed. Error:", e)
+        print("Parsed data:", data)
+        raise RuntimeError("JSON post-processing failed.")
+
+
+
+
 
 
 # ============================================================
@@ -302,7 +420,6 @@ def call_llm_for_augmentations(
 def main():
     random.seed(RANDOM_SEED)
 
-    # Load data
     print(f"Loading data from: {INPUT_CSV}")
     df = pd.read_csv(INPUT_CSV)
 
@@ -310,15 +427,17 @@ def main():
         if col not in df.columns:
             raise ValueError(f"Column '{col}' not found in input CSV.")
 
-    # Basic cleaning
+    df[AUGMENTED_COLUMN] = 0
+    df[ORIGINAL_ID_COLUMN] = df[ID_COLUMN]
+
+    # Keep only polarized examples as input
     df = df.dropna(subset=[TEXT_COLUMN, LABEL_COLUMN])
     df[LABEL_COLUMN] = df[LABEL_COLUMN].astype(int)
 
-    # Filter to polarized = 1
     df_pol = df[df[LABEL_COLUMN] == 1].copy()
-    print(f"Total polarized examples: {len(df_pol)}")
+    print(f"Total polarized examples (input to LLM): {len(df_pol)}")
 
-    # Further filter to those that actually mention at least one group pattern
+    # Find group mentions for each polarized example
     df_pol["group_mentions"] = df_pol[TEXT_COLUMN].apply(find_group_mentions)
     df_pol_matched = df_pol[df_pol["group_mentions"].map(len) > 0].copy()
     print(f"Polarized examples with group mentions: {len(df_pol_matched)}")
@@ -329,59 +448,88 @@ def main():
             n=MAX_EXAMPLES,
             random_state=RANDOM_SEED,
         ).reset_index(drop=True)
-        print(f"Subsampled to {len(df_pol_matched)} examples for augmentation.")
+        print(f"Subsampled polarized examples to {len(df_pol_matched)} for augmentation.")
 
     # Load Llama
     tokenizer, model = load_llama_model()
 
     augmented_rows: List[Dict[str, Any]] = []
 
-    print("Starting LLM-based augmentation for polarized group-mention examples...")
+    print("Starting LLM-based augmentation for polarized inputs...")
     for idx, row in df_pol_matched.iterrows():
         orig_id = row[ID_COLUMN]
-        text = str(row[TEXT_COLUMN])
-        label = int(row[LABEL_COLUMN])  # always 1 here
+        orig_text = str(row[TEXT_COLUMN])
         mentions = row["group_mentions"]
 
-        print(f"[{idx+1}/{len(df_pol_matched)}] id={orig_id}, label={label}, mentions={mentions}")
-
-        new_texts = call_llm_for_augmentations(
-            tokenizer,
-            model,
-            text,
-            mentions,
-            N_AUG_PER_EXAMPLE,
+        print(
+            f"[{idx+1}/{len(df_pol_matched)}] "
+            f"id={orig_id}, label=1, mentions={mentions}"
         )
 
-        for j, new_text in enumerate(new_texts):
-            new_id = f"{orig_id}_aug{j+1}"
+        # 1) Generate new POLARIZED posts (label 1)
+        pol_texts = call_llm_for_augmentations(
+            tokenizer,
+            model,
+            orig_text,
+            mentions,
+            N_AUG_PER_EXAMPLE,
+            target_label=1,
+        )
+
+        for j, new_text in enumerate(pol_texts):
+            new_id = f"{orig_id}_pol_aug{j+1}"
             augmented_rows.append(
                 {
                     ID_COLUMN: new_id,
+                    ORIGINAL_ID_COLUMN: orig_id,
                     TEXT_COLUMN: new_text,
-                    LABEL_COLUMN: label,  # keep label=1
+                    LABEL_COLUMN: 1,  # still polarized
+                    AUGMENTED_COLUMN: 1,
                 }
             )
 
-    print(f"Generated {len(augmented_rows)} augmented rows.")
+        # 2) Generate new NON-POLARIZED posts (label 0)
+        non_texts = call_llm_for_augmentations(
+            tokenizer,
+            model,
+            orig_text,
+            mentions,
+            N_AUG_PER_EXAMPLE,
+            target_label=0,
+        )
+
+        for j, new_text in enumerate(non_texts):
+            new_id = f"{orig_id}_non_aug{j+1}"
+            augmented_rows.append(
+                {
+                    ID_COLUMN: new_id,
+                    ORIGINAL_ID_COLUMN: orig_id,
+                    TEXT_COLUMN: new_text,
+                    LABEL_COLUMN: 0,  # de-escalated
+                    AUGMENTED_COLUMN: 1,
+                }
+            )
+
+    print(f"Generated {len(augmented_rows)} augmented rows total.")
 
     df_aug = pd.DataFrame(augmented_rows)
 
     # Combine original + augmented
     full_df = pd.concat([df, df_aug], ignore_index=True)
 
-    # Optional: drop exact duplicates by text+label
+    # Optional dedup by text+label
     full_df = full_df.drop_duplicates(subset=[TEXT_COLUMN, LABEL_COLUMN])
 
     print(f"Final dataset size (original + augmented, deduped): {len(full_df)}")
 
-    # Save
     out_dir = os.path.dirname(OUTPUT_CSV)
     if out_dir:
         os.makedirs(out_dir, exist_ok=True)
+
     print(f"Saving augmented dataset to: {OUTPUT_CSV}")
     full_df.to_csv(OUTPUT_CSV, index=False)
     print("Done.")
+
 
 
 if __name__ == "__main__":

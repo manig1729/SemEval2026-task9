@@ -1,0 +1,3040 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+2025-12-05 22:37:39.294757: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+START MAIN FILE
+Loading data from: /projects/tejo9855/Projects/SemEval2026-task9/data/subtask1/train/eng.csv
+Total polarized examples: 1002
+Polarized examples with group mentions: 391
+Subsampled to 100 examples for augmentation.
+Path to model:  /gpfs/alpine1/llms/hf-transformers/Llama-3.1-8B-Instruct
+Config established!
+Tokenizer loaded!
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:12<00:36, 12.21s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:22<00:21, 10.91s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:32<00:10, 10.46s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:34<00:00,  7.28s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:34<00:00,  8.63s/it]
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Model loaded!
+Starting LLM-based augmentation for polarized group-mention examples...
+[1/100] id=en_a5c10ec4202d6ea9118c80e7e32a0092, label=1, mentions=['Gaza', 'Israel']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        A very moral army. IDF Gaza Israel
+
+        Groups or entities mentioned in the original post:
+        ["Gaza", "Israel"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            but you must chang
+[2/100] id=en_5ea66ab51cd728ea412cd3c5011b9454, label=1, mentions=['Ukraine', 'liberal']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Do all the liberal fascists still support NATO expansion into Ukraine..?!?
+
+        Groups or entities mentioned in the original post:
+        ["Ukraine", "liberal"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supporti
+[3/100] id=en_69a6769eef9b679fd6feaa5728bb1309, label=1, mentions=['woke']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Cant believe Trudeau and his woke mob are censoring this
+
+        Groups or entities mentioned in the original post:
+        ["woke"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            but yo
+[4/100] id=en_dcd897750d6fb448cd3dc342f184e1bd, label=1, mentions=['Joe Biden', 'MAGA']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        MAGA MEGA MAGA MEGA MAGA TRICKLEDOWN Is Joe Biden publicly sending out messages with hidden sexual overtones?
+
+        Groups or entities mentioned in the original post:
+        ["Joe Biden", "MAGA"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* o
+[5/100] id=en_c2be52de644bc11c032dc925efbaf508, label=1, mentions=['conservative']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        With one thing I would disagree corruption and allowing friends of the king to break the laws are part of the real conservative values.
+
+        Groups or entities mentioned in the original post:
+        ["conservative"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Ke
+[6/100] id=en_060b919e8a2fb8aa53a972ad322998d3, label=1, mentions=['Trumps']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Ya well Lindsey said Trumps insurrection was too much too then stuck his head right back up Trumps fat orange ass.
+
+        Groups or entities mentioned in the original post:
+        ["Trumps"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stan
+[7/100] id=en_640180bb71a8c2dd9c6dd6b384c2bf08, label=1, mentions=['JOE BIDEN', 'Joe Biden']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Fck Joe Biden! Arrest JOE BIDEN FOR TREASON!
+
+        Groups or entities mentioned in the original post:
+        ["JOE BIDEN", "Joe Biden"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            
+[8/100] id=en_2ca7e3a8d6ee6e90ec81e27e5f085df6, label=1, mentions=['Russia']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Peacemakers and appeasers take note. The Finns know about Russia better than most! This is Ukrainian territory stolen by Russian aggression.
+
+        Groups or entities mentioned in the original post:
+        ["Russia"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Kee
+[9/100] id=en_d0ee97b42590bcd5d5ee6f04373fc320, label=1, mentions=['MAGA']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Are you telling me that MAGA folks dont have deep nuance to their xenophobia?
+
+        Groups or entities mentioned in the original post:
+        ["MAGA"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking
+[10/100] id=en_33707e17d537c7254331084571918670, label=1, mentions=['Israel']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Killed by the apartheid state Israel
+
+        Groups or entities mentioned in the original post:
+        ["Israel"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            but you must change the 
+[11/100] id=en_953175fbdf11ba464912586a5b9500da, label=1, mentions=['Republicans']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Epic treason by all Republicans.
+
+        Groups or entities mentioned in the original post:
+        ["Republicans"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            but you must change the
+[12/100] id=en_2a599535cfb033bc7a31d97eb0a8724e, label=1, mentions=['progressive']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        progressive policies intended to destroy Australia
+
+        Groups or entities mentioned in the original post:
+        ["progressive"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            but y
+[13/100] id=en_5da3fb51a87bd3b4129af8ad9e8ca574, label=1, mentions=['X']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        I just signed a petition Investigate X and Elon Musk for election interference. Sign here leadnow.cacampaignsel...
+
+        Groups or entities mentioned in the original post:
+        ["X"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e
+[14/100] id=en_ed5af226370e0597001ed34251e0ee3c, label=1, mentions=['immigration']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        US immigration is gaming Google to create a mirage of mass deportations
+
+        Groups or entities mentioned in the original post:
+        ["immigration"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mockin
+[15/100] id=en_ca630cc29fa116b0d4e4b05510a38357, label=1, mentions=['breitbart']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Ramlawi is trying to score points with breitbart readers or what? a2council
+
+        Groups or entities mentioned in the original post:
+        ["breitbart"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mock
+[16/100] id=en_c36104fd0f40730220c8dfa5c710e868, label=1, mentions=['Joe Biden', 'Kamala Harris']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Fuck Joe Biden and Kamala Harris
+
+        Groups or entities mentioned in the original post:
+        ["Joe Biden", "Kamala Harris"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            but you 
+[17/100] id=en_258c393d8f67bbd978d82aa59c974e2f, label=1, mentions=['woke']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        im being silenced by the woke mob
+
+        Groups or entities mentioned in the original post:
+        ["woke"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            but you must change the speci
+[18/100] id=en_4e3f9e48bef1da1a726cd5990336d959, label=1, mentions=['woke']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        and like clockwork the woke mob cums for me again
+
+        Groups or entities mentioned in the original post:
+        ["woke"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            but you must 
+[19/100] id=en_26722eaa74b756f0f26009b989e9ccd8, label=1, mentions=['MAGA', 'woke']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        MAGA inspired Blueprint for Canada anti woke Far RW agenda. No to bigotry and Christofascism in ldnont tvdsb
+
+        Groups or entities mentioned in the original post:
+        ["MAGA", "woke"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stan
+[20/100] id=en_70e4e9a6ba671ae225ae09d0dd4698af, label=1, mentions=['Israel']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Yes. Israel is an apartheid state. Theres the lie.
+
+        Groups or entities mentioned in the original post:
+        ["Israel"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            but you mu
+[21/100] id=en_c2d87210adeaa631a882551ab8b7c9f6, label=1, mentions=['border']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        speaking FACTS. Elites only care about border security when its at their doorstep.
+
+        Groups or entities mentioned in the original post:
+        ["border"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, 
+[22/100] id=en_69f6835e1c1da40558e29f004b7563bc, label=1, mentions=['woke']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        This happened in the UK too and the woke mob were silent.
+
+        Groups or entities mentioned in the original post:
+        ["woke"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            but y
+[23/100] id=en_b501d3393dc755a300b9860f5c34145d, label=1, mentions=['MSNBC', 'Ukraine']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Why is MSNBC guest bothsidesing the Ukraine invasion?!?! WHAT?????
+
+        Groups or entities mentioned in the original post:
+        ["MSNBC", "Ukraine"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mockin
+[24/100] id=en_1914cdc0eb03db4b115bc521e699c641, label=1, mentions=['Israel']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        The map in your kids classroom is wrong. Nablus is NOT part of Israel. The people of Nablus are not Israeli citizens. They are living under a belligerent military occupation which has to end as soon as possible.
+
+        Groups or entities mentioned in the original post:
+        ["Israel"]
+
+        Your task:
+        - Generate 3 new posts that:
+       
+[25/100] id=en_44ebc6e6ca857b31414037a4acd42f03, label=1, mentions=['immigration']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        I voted for him because he ran against a hard left, police hating, illegal immigration supporting, mumbling, bumbling dumbass
+
+        Groups or entities mentioned in the original post:
+        ["immigration"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a simila
+[26/100] id=en_8830f00242564585a3c074d2edc98f46, label=1, mentions=['Mike Pence']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Mike Pence has grown a pair and I for one am here for it.
+
+        Groups or entities mentioned in the original post:
+        ["Mike Pence"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+           
+[27/100] id=en_c6329d080fea527325a5b40e9f0fdaab, label=1, mentions=['MAGA']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        MAGA supporters "MAGgots"... or should it be "MAGAgots" or "MAGagots"? AskinForAfriend
+
+        Groups or entities mentioned in the original post:
+        ["MAGA"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive
+[28/100] id=en_9582525f43b75911a1f0008d773d26aa, label=1, mentions=['Palestine']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Free RATs and Free Palestine
+
+        Groups or entities mentioned in the original post:
+        ["Palestine"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            but you must change the speci
+[29/100] id=en_886b2bf3bdd3db7cd82072495b9c92d6, label=1, mentions=['woke']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Are gender reveal parties still a thing or are they offensive to the woke mob?
+
+        Groups or entities mentioned in the original post:
+        ["woke"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mockin
+[30/100] id=en_a2f7d5a87d8b07d16aead4286d092fcd, label=1, mentions=['Russia', 'Trump', 'Ukraine']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Russia attacking Ukraine. But Trump wanna blame the "rigged election". Why is he even allowed to talk publicly?????
+
+        Groups or entities mentioned in the original post:
+        ["Russia", "Trump", "Ukraine"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a s
+[31/100] id=en_ac736f9508f783d8f5422fa53b39040f, label=1, mentions=['antifa', 'blm']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        hcci supports antifa,blm,defund the police and socialism
+
+        Groups or entities mentioned in the original post:
+        ["antifa", "blm"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+         
+[32/100] id=en_d86f796929fc62c952c95babc161aa6c, label=1, mentions=['Donald Trump']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Donald Trump is a criminal, not a media
+
+        Groups or entities mentioned in the original post:
+        ["Donald Trump"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            but you must ch
+[33/100] id=en_af2cd5d3f984603cb45e9069654fadbb, label=1, mentions=['Fox']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Why are you using the Fox News spin? "Dems ambush amid Musk meltdown?"
+
+        Groups or entities mentioned in the original post:
+        ["Fox"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+     
+[34/100] id=en_3fad6ff3bc1e061cc1f79c1898e6dd32, label=1, mentions=['MSNBC']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        I am boycotting MSNBC until they stop talking about swelling between the anus and genitals.
+
+        Groups or entities mentioned in the original post:
+        ["MSNBC"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supp
+[35/100] id=en_f06d48bd92aacb4b50d4727690daaffc, label=1, mentions=['Israel']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        I hate the Apartheid State of Israel.
+
+        Groups or entities mentioned in the original post:
+        ["Israel"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            but you must change the
+[36/100] id=en_7ed6a4cc1529dbb709066269e2f8f3a9, label=1, mentions=['Israel']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        I think folks on the other side claim that Israel is held to a higher standard, therefore "antisemitism", because they happen to be "the only jewish state".
+
+        Groups or entities mentioned in the original post:
+        ["Israel"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion)
+[37/100] id=en_276baaf28bafafe1125e23f9139be49f, label=1, mentions=['MAGA', 'immigration']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Well, when MAGA says, "illegal immigration" they always mean "keep brown people Im surprised that people are surprised.
+
+        Groups or entities mentioned in the original post:
+        ["MAGA", "immigration"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a simi
+[38/100] id=en_fb386cf5b98ed36b9b5c03c606241461, label=1, mentions=['Border']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Border security IS socialism, you pea brain. Our taxes collectively pay for it.
+
+        Groups or entities mentioned in the original post:
+        ["Border"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, moc
+[39/100] id=en_b69779b85257a3093d48e15448ada0f4, label=1, mentions=['ukraine']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        its not the beginning of the ukraine invasion u had to catch i didnt catch much of thebeginning
+
+        Groups or entities mentioned in the original post:
+        ["ukraine"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical
+[40/100] id=en_00c4fb0eff0c8213ed01165380747c7b, label=1, mentions=['leftist']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Socialist Valentines OC Kookoo socialism socialist politics leftist valentines art drawing furry deer rose red candle suit punk gay artist romantic
+
+        Groups or entities mentioned in the original post:
+        ["leftist"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+      
+[41/100] id=en_2e34309a61edbef4dc5bff7d34183e35, label=1, mentions=['Palestine']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Now can we fuck around and free Palestine too? Just add it to the docket.
+
+        Groups or entities mentioned in the original post:
+        ["Palestine"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mockin
+[42/100] id=en_acce08062a5c0409b94e10f3f1103df1, label=1, mentions=['MSNBC']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Pete Hegseths tenure at the Pentagon goes from bad to worse MSNBC
+
+        Groups or entities mentioned in the original post:
+        ["MSNBC"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+        
+[43/100] id=en_6ba24af4bf3d36e41f68e3d079c42de5, label=1, mentions=['immigration']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Illegal immigration hurts the working class people people of color the most. Illegal immigrants should return to their home countries.
+
+        Groups or entities mentioned in the original post:
+        ["immigration"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep
+[44/100] id=en_4467decd204af9d9944086e0934aea20, label=1, mentions=['Ukraine']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Time for Ukraine to receive the Iron Dome. Now.
+
+        Groups or entities mentioned in the original post:
+        ["Ukraine"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            but you must
+[45/100] id=en_8f6bc89faf14d30742b68e24181c40ac, label=1, mentions=['Israel', 'Russia']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Israel and Russia. Netanyahu and Putin. Genocidal and Ethnic Genocide EthnicCleansing
+
+        Groups or entities mentioned in the original post:
+        ["Israel", "Russia"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical,
+[46/100] id=en_395f8651a08a615e81825584b979a19d, label=1, mentions=['Democrats']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Democrats still want to defund the Police
+
+        Groups or entities mentioned in the original post:
+        ["Democrats"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            but you must cha
+[47/100] id=en_5232f29e9007e8a1080a66a34bde752b, label=1, mentions=['Gaza']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Fireworks last night was like the Gaza Strip man
+
+        Groups or entities mentioned in the original post:
+        ["Gaza"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            but you must c
+[48/100] id=en_f999531504cb573c162718255c2177fb, label=1, mentions=['Democrats']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Democrats love to keep secrets
+
+        Groups or entities mentioned in the original post:
+        ["Democrats"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            but you must change the spe
+[49/100] id=en_16915219f3cc837b82d9e5958adf3180, label=1, mentions=['Ukraine']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Perhaps if we call it the War of Russian Aggression, the southern GOP will get behind supporting Ukraine.
+
+        Groups or entities mentioned in the original post:
+        ["Ukraine"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g.
+[50/100] id=en_ef1f45acd3f805d551e07d6311e043ef, label=1, mentions=['Liberals', 'border']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Liberals are snakes with shifting beliefs. How do you a complete 180 on border security?
+
+        Groups or entities mentioned in the original post:
+        ["Liberals", "border"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., crit
+[51/100] id=en_b522a1570c607da6256c3c2f2ec49e6d, label=1, mentions=['immigration']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Lefties failing to understand the difference between legal and illegal immigration yet again
+
+        Groups or entities mentioned in the original post:
+        ["immigration"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critica
+[52/100] id=en_b2fc1b3639fb7c4d78cad624ad409e94, label=1, mentions=['Joe Biden']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Im not sure Joe Biden remembers what he did in office.
+
+        Groups or entities mentioned in the original post:
+        ["Joe Biden"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            but
+[53/100] id=en_6f1ec91ee7b6cb777e9796598fb44098, label=1, mentions=['immigration']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        For all the NIMBYs and anti immigration folks out there, this wouldve been you!
+
+        Groups or entities mentioned in the original post:
+        ["immigration"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive
+[54/100] id=en_9bc4a2e141f0e5a1050c64a814b48e93, label=1, mentions=['woke']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Asinine response. Shame on del rio for giving in. Never apologize to the woke mob.
+
+        Groups or entities mentioned in the original post:
+        ["woke"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mo
+[55/100] id=en_fac687491cc8299fdb393693ac801a12, label=1, mentions=['LIBERAL']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Can I get the RADICAL LIBERAL AGENDA with onion rings?
+
+        Groups or entities mentioned in the original post:
+        ["LIBERAL"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            but y
+[56/100] id=en_3de2aa14904c801c2e06757a1f7b6e8c, label=1, mentions=['border']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        I wonder if an immigrant advocating to shut down the American government including the negative impact on border security, Coast Guard,... can be construed to be treason, hence basis for deportation.
+
+        Groups or entities mentioned in the original post:
+        ["border"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain c
+[57/100] id=en_c586dff46afad0e1eb8b3e2f068267bd, label=1, mentions=['Republicans']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Republicans want to defund public schools AND make public schools polling places? And invite bomb threats on schools? WTF. azmirror.combriefstena...
+
+        Groups or entities mentioned in the original post:
+        ["Republicans"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+ 
+[58/100] id=en_584db00e75ba7f8fb7501033fbb6645e, label=1, mentions=['immigration']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Its a clever anti immigration ploy, turning the UK into an unattractive place for refugees and immigration. ToryPolicy.
+
+        Groups or entities mentioned in the original post:
+        ["immigration"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *typ
+[59/100] id=en_3c2f1bb1e91ecc41f74bf887e0ec1c3b, label=1, mentions=['Israel']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        I did. Thats why Israel is an apartheid state run by a terrorist regime.
+
+        Groups or entities mentioned in the original post:
+        ["Israel"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+
+[60/100] id=en_ca6966039c8bc5b6c4ae6a325e48aefe, label=1, mentions=['Russia']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        But you support Ukrainian Nazis who fight against Russia?
+
+        Groups or entities mentioned in the original post:
+        ["Russia"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            but
+[61/100] id=en_6897598b402ae90978cc8308936044a8, label=1, mentions=['immigration']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        The issue is illegal immigration you dim bulb.
+
+        Groups or entities mentioned in the original post:
+        ["immigration"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            but you m
+[62/100] id=en_1ba82d831ce106673aa82a49ad0321f6, label=1, mentions=['Trump']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        The radical left suck save America President Trump
+
+        Groups or entities mentioned in the original post:
+        ["Trump"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            but you mus
+[63/100] id=en_b6fbf0efe170bd0a1853d712527ad838, label=1, mentions=['Immigration']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Yes! Immigration is a classic manufactured crisis, which is to say not a crisis.
+
+        Groups or entities mentioned in the original post:
+        ["Immigration"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportiv
+[64/100] id=en_01a6d616df9dc8ec4f63b15ac66511fb, label=1, mentions=['Facebook', 'Twitter', 'liberal']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Fuck Twitter Fuck YouTube Fuck Facebook Commie liberal agenda
+
+        Groups or entities mentioned in the original post:
+        ["Facebook", "Twitter", "liberal"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportiv
+[65/100] id=en_7c96a15cad4a7c4e75fe6733c351b79f, label=1, mentions=['Fox']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        The disgraceful lies of Fox News
+
+        Groups or entities mentioned in the original post:
+        ["Fox"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            but you must change the specifi
+[66/100] id=en_a10afd69b74af3c3b908638a788da631, label=1, mentions=['breitbart']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        No surprise breitbart is incapable of differentiating reality and fiction.
+
+        Groups or entities mentioned in the original post:
+        ["breitbart"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocki
+[67/100] id=en_12e78f91c54084c4aabd027c64be52f5, label=1, mentions=['israel']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        "pro israel, anti genocide" as a political stance is like "pro ignition, anti fire". The existence, foundation and national identity of israel are based entirely on the settler colonial displacement ie. genocide of Palestinians.
+
+        Groups or entities mentioned in the original post:
+        ["israel"]
+
+        Your task:
+        - Generate 3 new po
+[68/100] id=en_35e2ae98b918ba2ab1e07e756fc0c576, label=1, mentions=['Donald Trump']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Donald Trump is a 34 count convicted felon Donald Trump is a 34 count convicted felon Donald Trump is a 34 count convicted felon Donald Trump is a 34 count convicted felon Donald Trump is a 34 count convicted felon Donald Trump is a 34 count convicted felon
+
+        Groups or entities mentioned in the original post:
+        ["Donald Trump"]
+
+        You
+[69/100] id=en_3f1d7cc3cf5688a962fda4af46c2d054, label=1, mentions=['woke']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Lady a, didnt they change their name to appease the woke mob?
+
+        Groups or entities mentioned in the original post:
+        ["woke"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            b
+[70/100] id=en_7bf6a8c52ba7ed97ba981c15b8d6a674, label=1, mentions=['Russia', 'Ukraine']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        "Russia blames Ukraine for bombing of Argentinas Kiev embassy" Of course! All those embassies in Kiev are just serving as human shields!
+
+        Groups or entities mentioned in the original post:
+        ["Russia", "Ukraine"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+       
+[71/100] id=en_0c45292c1deaa071dc6b8772ab872d0c, label=1, mentions=['immigration']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        We need to DEPORT MUSK for illegal immigration.
+
+        Groups or entities mentioned in the original post:
+        ["immigration"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            but you 
+[72/100] id=en_6df8d3af2bc2742822d53fbc8e1ff488, label=1, mentions=['immigration']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Was this an illegal purchase by an illegal immigration? Just asking question.
+
+        Groups or entities mentioned in the original post:
+        ["immigration"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, 
+[73/100] id=en_052b43d2a30812271ebbfdae2d63c909, label=1, mentions=['Joe Biden']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Joe Biden.. And Joe Biden alone Caused inflation....
+
+        Groups or entities mentioned in the original post:
+        ["Joe Biden"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            but y
+[74/100] id=en_b2d3966553f103bcd076bd8e88a57b1a, label=1, mentions=['mike pence']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        i havent forgotten about that fly mike pence
+
+        Groups or entities mentioned in the original post:
+        ["mike pence"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            but you must
+[75/100] id=en_920ac8fb4f166132067054834c56fc64, label=1, mentions=['Biden', 'Liberal']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        "Heck, I voted for Biden three times." Signed, Liberal Asshats in Swing States
+
+        Groups or entities mentioned in the original post:
+        ["Biden", "Liberal"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, suppor
+[76/100] id=en_62010de983a90ed57ca22765690c237c, label=1, mentions=['Ukraine']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        And what would you call sending military aid to Ukraine
+
+        Groups or entities mentioned in the original post:
+        ["Ukraine"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            but 
+[77/100] id=en_88874939e5da3e0a102b4f6f030b4fb2, label=1, mentions=['Trump', 'biden']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Im gonna start acting like how trumpies were acting when biden was in office. Trump is NOT my president, this was a stolen election and Trump cheated the election!
+
+        Groups or entities mentioned in the original post:
+        ["Trump", "biden"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, di
+[78/100] id=en_287bb8ab99277c164482b367643ef2c7, label=1, mentions=['Border', 'immigration']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Border observers Illegal immigration surge helped fuel drug overdose spike
+
+        Groups or entities mentioned in the original post:
+        ["Border", "immigration"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, suppo
+[79/100] id=en_4578a55c85e9fe08a5d1618338589dee, label=1, mentions=['Joe Biden']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Didnt Joe Biden shower and rape his teen daughter. Oh thats right he did.
+
+        Groups or entities mentioned in the original post:
+        ["Joe Biden"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mockin
+[80/100] id=en_6d923c74ac811c7af8dbf5aa0d6f0fe2, label=1, mentions=['border']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Fun fact voted with PedoPrez to eliminate all southern border security.
+
+        Groups or entities mentioned in the original post:
+        ["border"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+ 
+[81/100] id=en_3cf27a87666c76b6dc31dd0e0e5dbeea, label=1, mentions=['Ukraine']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Starting to think the Ukraine invasion is worse than Jan 6.
+
+        Groups or entities mentioned in the original post:
+        ["Ukraine"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            
+[82/100] id=en_17dcc498c4fd1d7c4d299b26dd7a5019, label=1, mentions=['Trump', 'Ukraine']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Trump sees Putins Ukraine invasion and wants to invade our neighbors!
+
+        Groups or entities mentioned in the original post:
+        ["Trump", "Ukraine"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, moc
+[83/100] id=en_40a8828190642ea68e569aaa3821cd30, label=1, mentions=['republicans']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Which is why republicans are trying to take voting rights away from Women.
+
+        Groups or entities mentioned in the original post:
+        ["republicans"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, moc
+[84/100] id=en_25581d14bfade4f8219cdb1e05d3a402, label=1, mentions=['Israel']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        If he loves refugees so much why doesnt he bring refugees to Israel
+
+        Groups or entities mentioned in the original post:
+        ["Israel"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+     
+[85/100] id=en_cde34d12137c9825ef08ff44f0819347, label=1, mentions=['Gaza']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        why have I not heard or seen anyone talk about the Ben Gurion Canal Project in regards to the decimation Gaza? Is it a conspiracy theory or nah? thoughts?
+
+        Groups or entities mentioned in the original post:
+        ["Gaza"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+  
+[86/100] id=en_db607ce17c6337a53b97573b01100a12, label=1, mentions=['woke']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        "snowflake, sjw, woke" what if i bash my head against the wall
+
+        Groups or entities mentioned in the original post:
+        ["woke"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            
+[87/100] id=en_e72b98790179c49fd0c7cdb5b36d2fcd, label=1, mentions=['Joe Biden']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Not once under Joe Biden was my Social Security payment late.....Just Sayin...
+
+        Groups or entities mentioned in the original post:
+        ["Joe Biden"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, m
+[88/100] id=en_a212d8e3e61e46b404693e2a25de8070, label=1, mentions=['democrats']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Why arent democrats filing injunctions?
+
+        Groups or entities mentioned in the original post:
+        ["democrats"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            but you must chang
+[89/100] id=en_1a48c1c059364114b73066ab21317946, label=1, mentions=['immigration', 'maga', 'trumps']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        The musk vs maga stuff is fun to watch but it does stoke anti immigration sentiment in trumps base and maybe in new spaces.
+
+        Groups or entities mentioned in the original post:
+        ["immigration", "maga", "trumps"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        
+[90/100] id=en_e6b57f43babc52893dd4c253b80203f2, label=1, mentions=['Republicans']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Republicans "Accepting a pardon is an admission of guilt!" Also Republicans "Please pardon everyone from January 6!"
+
+        Groups or entities mentioned in the original post:
+        ["Republicans"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* 
+[91/100] id=en_eaf6fa0340c41ab8d976f7e3353c445c, label=1, mentions=['immigration']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        When are the Truckers going to the southern boarder and stop illegal immigration?
+
+        Groups or entities mentioned in the original post:
+        ["immigration"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supporti
+[92/100] id=en_eb56499c0778a9424138d6bffba09bce, label=1, mentions=['Gaza']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Blinken is the Butcher of Blinken ButcherOfGaza Gaza Genocide
+
+        Groups or entities mentioned in the original post:
+        ["Gaza"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+            b
+[93/100] id=en_57c985ee010e4c012900f311f4f7b72e, label=1, mentions=['trump']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Well no, because Hamas uses their children as human shields, meaning theyre the ones guilty of war crimes. You cant use children as human shields as a trump card to get out of accountability for October 7th
+
+        Groups or entities mentioned in the original post:
+        ["trump"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Re
+[94/100] id=en_ce037934e9c48dad2ad517f22d8d6017, label=1, mentions=['X']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        I have just joined as I had to get off X. It has been rigged to expose you to total racist and extreme right wing ideology.
+
+        Groups or entities mentioned in the original post:
+        ["X"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of 
+[95/100] id=en_348c6653bd68adc92745cf3a58079274, label=1, mentions=['Israel', 'Russia']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Israel and Russia. Netanyahu and Putin. Genocidal and Ethnic Cleansing.... Genocide EthnicCleansing
+
+        Groups or entities mentioned in the original post:
+        ["Israel", "Russia"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e
+[96/100] id=en_53305f7766e99dc3ecc22c58d9bb38ea, label=1, mentions=['woke']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        It did the right thing. Push back at every turn against the woke mob.
+
+        Groups or entities mentioned in the original post:
+        ["woke"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+     
+[97/100] id=en_04ee1aa7763d7cdf79a5669e419f0520, label=1, mentions=['Russia', 'Ukraine']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        and Russia should compensate Ukraines allies for the cost of the military aid they have provided Ukraine.
+
+        Groups or entities mentioned in the original post:
+        ["Russia", "Ukraine"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of st
+[98/100] id=en_1bf4b4ddc1cd5ff2fbb12679d520f1cd, label=1, mentions=['CNN', 'Trump', 'Ukraine']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Has CNN blamed the Ukraine invasion on Trump yet?
+
+        Groups or entities mentioned in the original post:
+        ["CNN", "Trump", "Ukraine"]
+
+        Your task:
+        - Generate 3 new posts that:
+        1. Remain clearly POLARIZED (strong, divisive opinion).
+        2. Keep a similar *type* of stance (e.g., critical, supportive, mocking),
+      
+[99/100] id=en_a21e045198a040d4bb8cab4a8a985a34, label=1, mentions=['Trump', 'conservative', 'leftist']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        Sarah is right, and I as a leftist myself sound the alarm, our resistance movement cannot become just the most radical of us, narrowing us further away from the swing voter, we must oppose Trump from an ideological position broad enough to win the next election. It is less about too conservative
+
+        Groups or entities mentioned in the original post
+[100/100] id=en_765857b7bb143a31a77b0f760296e412, label=1, mentions=['Democrat']
+JSON parse failed. Error: Expecting value: line 1 column 1 (char 0)
+Raw LLM output:
+ system
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are a careful data augmentation assistant. You strictly follow the requested JSON output format.user
+
+We are studying polarization in social media posts.
+
+    - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
+    usually framing an "us vs them" dynamic, strongly supporting one side and/or
+    attacking another.
+    - Here, all posts you will see are labeled as POLARIZED (1).
+
+        You will be given a social media post that is labeled as POLARIZED (1).
+        It expresses a strong, divisive attitude.
+
+        Original post:
+        4 years Democrat rule. short list Open borders with 400K unaccounted lost children Countless American fentanyl deaths because of OPEN Borders Encouraging foreigners to illegally enter the U.S. Supporting men in womens sports Supporting gender reassignment for minors and jail inmates.
+
+        Groups or entities mentioned in the original post:
+        ["
+Generated 0 augmented rows.
+Final dataset size (original + augmented, deduped): 2676
+Saving augmented dataset to: /projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/train_aug_groups.csv
+Done.
