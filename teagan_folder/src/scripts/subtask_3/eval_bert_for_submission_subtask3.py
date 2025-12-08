@@ -1,6 +1,7 @@
 import os
 import torch
 import pandas as pd
+import numpy as np
 from torch.utils.data import Dataset
 from transformers import (
     AutoTokenizer,
@@ -29,6 +30,15 @@ SUBTASK3_LABEL_COLS = [
     "lack_of_empathy",
     "invalidation",
 ]
+
+PER_LABEL_THRESHOLDS = {
+    "stereotype": 0.100,
+    "vilification": 0.350,
+    "dehumanization": 0.100,
+    "extreme_language": 0.400,
+    "lack_of_empathy": 0.250,
+    "invalidation": 0.050,
+}
 
 
 # ==============================================================
@@ -92,7 +102,12 @@ def main():
 
     # Convert logits → probabilities → 0/1 predictions
     probs = torch.sigmoid(torch.tensor(logits))
-    preds = (probs >= 0.5).int().numpy()
+    probs_np = probs.numpy()
+    preds = np.zeros_like(probs_np, dtype=int)
+
+    for i, col in enumerate(SUBTASK3_LABEL_COLS):
+        t = PER_LABEL_THRESHOLDS[col]
+        preds[:, i] = (probs_np[:, i] >= t).astype(int)
 
     # Build output DataFrame
     out_df = pd.DataFrame()
