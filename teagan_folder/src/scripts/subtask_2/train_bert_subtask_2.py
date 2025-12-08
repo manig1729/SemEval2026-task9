@@ -6,6 +6,9 @@ import numpy as np
 import torch
 import pandas as pd
 
+import json
+import os
+
 from torch.utils.data import Dataset
 from transformers import (
     AutoTokenizer,
@@ -20,22 +23,23 @@ from sklearn.metrics import f1_score, precision_score, recall_score
 #                   USER CONFIGURATION
 # ============================================================
 
-# TRAIN_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_2/masked/train_subtask2_masked.csv" 
-# VAL_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_2/val_subtask2.csv"
+# MODEL_NAME = "masked"
+# MODEL_NAME = "llm_aug"
+MODEL_NAME = "base"
 
-# OUTPUT_DIR = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_2/subtask_2_model_masked"
-# TEXT_COLUMN = "text_masked"
-
-TRAIN_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_2/llm_aug/subtask2_train_llm_aug.csv" 
-VAL_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_2/val_subtask2.csv"
-
-OUTPUT_DIR = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_2/subtask_2_model_llm_aug"
-TEXT_COLUMN = "text"
+TRAIN_CSV = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_2/{MODEL_NAME}/train_{MODEL_NAME}.csv" 
+VAL_CSV   = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_2/val_subtask_2.csv" 
+          
+OUTPUT_DIR = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_2/{MODEL_NAME}_model"
+if MODEL_NAME == "masked":
+    TEXT_COLUMN = "text_masked"      
+else:
+    TEXT_COLUMN = "text"  
 
 MODEL_NAME = "vinai/bertweet-base"
 BATCH_SIZE = 8
 NUM_EPOCHS = 3.0
-MAX_LENGTH = 256
+MAX_LENGTH = 128
 
 SUBTASK2_LABEL_COLS = [
     "political",
@@ -171,12 +175,13 @@ def main():
         per_device_train_batch_size=BATCH_SIZE,
         per_device_eval_batch_size=BATCH_SIZE,
         eval_strategy="epoch",
-        save_strategy="epoch",
-        load_best_model_at_end=True,
+        save_strategy="no",
+        save_steps=None,
+        load_best_model_at_end=False,
         metric_for_best_model="f1_macro",
         greater_is_better=True,
         logging_steps=50,
-        no_cuda=True,
+        # no_cuda=True,
     )
 
     trainer = Trainer(
@@ -195,6 +200,9 @@ def main():
     trainer.save_model(OUTPUT_DIR)
     tokenizer.save_pretrained(OUTPUT_DIR)
     print("Done.")
+
+    with open(os.path.join(OUTPUT_DIR, "log_history.json"), "w") as f:
+        json.dump(trainer.state.log_history, f, indent=2)
 
 
 if __name__ == "__main__":

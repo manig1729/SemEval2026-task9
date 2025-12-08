@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/scripts/train_bert_classifier.py", line 5, in <module>
-    from numpy._core.numeric import True_
-ModuleNotFoundError: No module named 'numpy._core.numeric'

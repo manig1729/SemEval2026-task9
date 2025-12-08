@@ -26,4 +26,4 @@ conda activate teagan-conda-env-curc
 # mkdir -p models/ results/ metadata/
 
 # 6. Run python script
-python src/scripts/eval_bert_for_submission.py
+python src/scripts/subtask_1/eval_bert_for_submission.py

@@ -18,18 +18,22 @@ from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 #                    USER CONFIGURATION
 # ============================================================
 
-MODEL_DIR = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_1/masked_model_uni_bi_gram_pmi"
+# MODEL_NAME = "masked"
+# MODEL_NAME = "llm_aug"
+MODEL_NAME = "base"
+
+MODEL_DIR = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_1/{MODEL_NAME}_model"
 TEST_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_1/test_subtask_1.csv"
 
 ID_COLUMN = "id"
 TEXT_COLUMN = "text"
 LABEL_COLUMN = "polarization"   # gold label column
 
-OUTPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/subtask_1/pred_eng_uni_bi_gram_pmi.csv"
-METRICS_JSON = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/subtask_1/metrics_eng_uni_bi_gram_pmi.json"
+OUTPUT_CSV = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/subtask_1/pred_{MODEL_NAME}.csv"
+METRICS_JSON = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/subtask_1/metrics_{MODEL_NAME}.json"
 
 MAX_LENGTH = 128
-USE_CPU_ONLY = True  # set True if you want to force CPU
+USE_CPU_ONLY = False  # set True if you want to force CPU
 
 
 # ============================================================

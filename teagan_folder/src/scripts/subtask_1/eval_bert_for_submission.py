@@ -16,12 +16,12 @@ from transformers import (
 #                    USER CONFIGURATION
 # ============================================================
 
-MODEL_DIR = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/masked_model_uni_bi_gram_pmi"  
+MODEL_DIR = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_1/masked_model"  
 TEST_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/data/subtask1/dev/eng.csv"       
 ID_COLUMN = "id"                        
 TEXT_COLUMN = "text"                
 
-OUTPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/predictions/subtask_1/pred_eng_uni_bi_gram_pmi.csv"     # SemEval submission file
+OUTPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/predictions/subtask_1/pred_eng_masked.csv"     # SemEval submission file
 
 MAX_LENGTH = 128
 USE_CPU_ONLY = True                      # set True if you want to force CPU

@@ -4,6 +4,7 @@ import random
 import numpy as np
 import torch
 import pandas as pd
+import json
 
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import f1_score
@@ -20,22 +21,23 @@ from transformers import (
 #                     USER CONFIGURATION
 # ============================================================
 
-# INPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_1/llm_aug/train_aug_groups.csv"   # path to your training CSV
-# VAL_CSV   = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_1/val_subtask_1.csv" 
-# TEXT_COLUMN = "text"                
-# LABEL_COLUMN = "polarization"         # 0/1 column
-# OUTPUT_DIR = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_1/llm_aug_model"     
+# MODEL_NAME = "masked"
+MODEL_NAME = "llm_aug"
+# MODEL_NAME = "base"
 
-INPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_1/masked/train_masked_subtask_1.csv"   # path to your training CSV
-VAL_CSV   = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_1/val_subtask_1.csv" 
-TEXT_COLUMN = "masked_text"                 
-LABEL_COLUMN = "polarization"         # 0/1 column
-OUTPUT_DIR = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_1/masked_model"          # where to save final model
+INPUT_CSV = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_1/{MODEL_NAME}/train_{MODEL_NAME}.csv" 
+VAL_CSV   = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_1/val_subtask_1.csv" 
+          
+OUTPUT_DIR = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_1/{MODEL_NAME}_model"
+if MODEL_NAME == "masked":
+    TEXT_COLUMN = "masked_text"      
+else:
+    TEXT_COLUMN = "text"  
 
+LABEL_COLUMN = "polarization"         
 MODEL_NAME = "vinai/bertweet-base"    # HF model name
 MAX_LENGTH = 128
 
-TEST_SIZE = 0.2                       # fraction for validation
 RANDOM_SEED = 42                      # for reproducibility
 
 NUM_EPOCHS = 6
@@ -171,7 +173,8 @@ def main():
         lr_scheduler_type="linear",
         warmup_ratio=WARMUP_RATIO,
         eval_strategy="epoch",
-        save_strategy="epoch",
+        save_strategy="no",
+        save_steps=None,
         logging_strategy="epoch",
         load_best_model_at_end=False,  # could set True if you add a metric to monitor
         no_cuda=USE_CPU_ONLY,
@@ -203,12 +206,10 @@ def main():
     trainer.save_model(OUTPUT_DIR)
     tokenizer.save_pretrained(OUTPUT_DIR)
 
-    log_history = trainer.state.log_history
-    df = pd.DataFrame(log_history)
-    out_path = os.path.join(OUTPUT_DIR, "eval/loss_log_history.csv")
-    df.to_csv(out_path, index=False)
-    print("Done.")
+    with open(os.path.join(OUTPUT_DIR, "log_history.json"), "w") as f:
+        json.dump(trainer.state.log_history, f, indent=2)
 
+    print("Done.")
 
 if __name__ == "__main__":
     main()

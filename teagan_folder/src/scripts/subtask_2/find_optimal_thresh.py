@@ -2,13 +2,19 @@ import os
 import torch
 import numpy as np
 import pandas as pd
+import json
 
 from torch.utils.data import Dataset
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, Trainer, TrainingArguments
 from sklearn.metrics import f1_score
 
-MODEL_DIR = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_2/subtask_2_model_masked"
-DEV_CSV  = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_2/val_subtask2.csv"
+# MODEL_NAME = "masked"
+MODEL_NAME = "llm_aug"
+# MODEL_NAME = "base"
+
+MODEL_DIR = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_2/{MODEL_NAME}_model"
+DEV_CSV  = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_2/val_subtask_2.csv"
+THRESHOLDS_DIR = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/subtask_2/per_label_thresholds_{MODEL_NAME}.json"
 
 MAX_LENGTH = 256
 BATCH_SIZE = 16
@@ -108,12 +114,10 @@ def main():
         best_thresholds[label_name] = best_t
         print(f"Label: {label_name:15s}  best_t: {best_t:.2f}  best F1: {best_f1:.4f}")
 
-    # You can just print these and paste them into your eval script
-    print("\nCopy-paste these into your eval script:")
-    print("PER_LABEL_THRESHOLDS = {")
-    for name, t in best_thresholds.items():
-        print(f'    "{name}": {t:.3f},')
-    print("}")
+    with open(THRESHOLDS_DIR, "w") as f:
+        json.dump(best_thresholds, f, indent=2)
+
+    print(f"Saved per-label thresholds to: {THRESHOLDS_DIR}")
 
 
 if __name__ == "__main__":

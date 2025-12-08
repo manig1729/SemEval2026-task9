@@ -17,12 +17,18 @@ from sklearn.metrics import f1_score, precision_score, recall_score
 #               USER SETTINGS (EDIT THESE ONLY)
 # ==============================================================
 
-MODEL_DIR = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_3/subtask_3_model_masked"
-TEST_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_3/test_subtask_3.csv"
-OUTPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/subtask_3/pred_eng_masked_eval.csv"
-METRICS_JSON = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/subtask_3/metrics_eng_masked_eval.json"
+MODEL_NAME = "masked"
+# MODEL_NAME = "llm_aug"
+# MODEL_NAME = "base"
 
-MAX_LENGTH = 256
+MODEL_DIR = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_3/{MODEL_NAME}_model"
+TEST_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_3/test_subtask_3.csv"
+
+OUTPUT_CSV = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/subtask_3/pred_{MODEL_NAME}.csv"
+METRICS_JSON = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/subtask_3/metrics_{MODEL_NAME}.json"
+
+
+MAX_LENGTH = 128
 BATCH_SIZE = 16
 
 SUBTASK3_LABEL_COLS = [
@@ -34,14 +40,33 @@ SUBTASK3_LABEL_COLS = [
     "invalidation",
 ]
 
-PER_LABEL_THRESHOLDS = {
-    "stereotype": 0.100,
-    "vilification": 0.350,
-    "dehumanization": 0.100,
-    "extreme_language": 0.400,
-    "lack_of_empathy": 0.250,
-    "invalidation": 0.050,
-}
+if MODEL_NAME == "base":
+    PER_LABEL_THRESHOLDS = {
+        "stereotype": 0.3,
+        "vilification": 0.2,
+        "dehumanization": 0.05,
+        "extreme_language": 0.49999999999999994,
+        "lack_of_empathy": 0.25,
+        "invalidation": 0.1
+    }
+elif MODEL_NAME == "masked":
+    PER_LABEL_THRESHOLDS = {
+        "stereotype": 0.25,
+        "vilification": 0.44999999999999996,
+        "dehumanization": 0.39999999999999997,
+        "extreme_language": 0.39999999999999997,
+        "lack_of_empathy": 0.25,
+        "invalidation": 0.1
+    }
+else:
+    PER_LABEL_THRESHOLDS = {
+        "stereotype": 0.05,
+        "vilification": 0.1,
+        "dehumanization": 0.25,
+        "extreme_language": 0.35,
+        "lack_of_empathy": 0.25,
+        "invalidation": 0.1
+    }
 
 
 # ==============================================================
