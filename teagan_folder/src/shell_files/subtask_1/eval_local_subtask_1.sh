@@ -6,8 +6,8 @@
 #SBATCH --partition=blanca-clearlab1
 #SBATCH --qos=blanca-clearlab1
 #SBATCH --gres=gpu:1
-#SBATCH --output=job_logs/train_bert_output-%j.out
-#SBATCH --time=02:00:00
+#SBATCH --output=job_logs/eval_model_output-%j.out
+#SBATCH --time=00:30:00
 
 # 1. Changing to project directory
 cd /projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/
@@ -26,4 +26,4 @@ conda activate teagan-conda-env-curc
 # mkdir -p models/ results/ metadata/
 
 # 6. Run python script
-python src/scripts/subtask_1/train_bert_subtask_1.py
+python src/scripts/subtask_1/eval_local.py

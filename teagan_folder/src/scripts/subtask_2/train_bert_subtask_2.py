@@ -20,12 +20,19 @@ from sklearn.metrics import f1_score, precision_score, recall_score
 #                   USER CONFIGURATION
 # ============================================================
 
-TRAIN_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/subtasks_23/subtask2_train_masked.csv" 
-VAL_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/subtasks_23/output/val_subtask2.csv"
+# TRAIN_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_2/masked/train_subtask2_masked.csv" 
+# VAL_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_2/val_subtask2.csv"
+
+# OUTPUT_DIR = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_2/subtask_2_model_masked"
+# TEXT_COLUMN = "text_masked"
+
+TRAIN_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_2/llm_aug/subtask2_train_llm_aug.csv" 
+VAL_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_2/val_subtask2.csv"
+
+OUTPUT_DIR = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_2/subtask_2_model_llm_aug"
+TEXT_COLUMN = "text"
 
 MODEL_NAME = "vinai/bertweet-base"
-OUTPUT_DIR = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/subtasks_23/output/subtask_2_model"
-
 BATCH_SIZE = 8
 NUM_EPOCHS = 3.0
 MAX_LENGTH = 256
@@ -56,8 +63,8 @@ class MultiLabelDataset(Dataset):
         self.label_cols = label_cols
         self.max_length = max_length
 
-        if "text" not in df.columns:
-            raise ValueError("Expected a 'text' column in the dataframe.")
+        if TEXT_COLUMN not in df.columns:
+            raise ValueError(f"Expected a {TEXT_COLUMN} column in the dataframe.")
 
         for col in self.label_cols:
             if col not in df.columns:
@@ -68,7 +75,7 @@ class MultiLabelDataset(Dataset):
 
     def __getitem__(self, idx) -> Dict[str, Any]:
         row = self.df.iloc[idx]
-        text = row["text"]
+        text = row[TEXT_COLUMN]
         labels = row[self.label_cols].values.astype(float)
 
         enc = self.tokenizer(
@@ -119,6 +126,16 @@ def main():
     print(f"Loading validation data from: {VAL_CSV}")
     val_df = pd.read_csv(VAL_CSV)
 
+    if TEXT_COLUMN not in val_df.columns:
+        if "text" in val_df.columns:
+            val_df[TEXT_COLUMN] = val_df["text"]
+            print(f"VAL: '{TEXT_COLUMN}' not found, using 'text' column instead.")
+        else:
+            raise ValueError(
+                f"Validation CSV must contain '{TEXT_COLUMN}' "
+                f"or a 'text' column."
+            )
+
     for col in SUBTASK2_LABEL_COLS:
         if col not in train_df.columns:
             raise ValueError(f"Train CSV missing label column: {col}")
@@ -159,6 +176,7 @@ def main():
         metric_for_best_model="f1_macro",
         greater_is_better=True,
         logging_steps=50,
+        no_cuda=True,
     )
 
     trainer = Trainer(

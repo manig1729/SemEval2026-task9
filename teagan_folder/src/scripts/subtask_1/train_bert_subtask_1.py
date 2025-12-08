@@ -20,10 +20,17 @@ from transformers import (
 #                     USER CONFIGURATION
 # ============================================================
 
-INPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/preprocessed_train_data/train_masked_manually_curated_lexicon.csv"   # path to your training CSV
-TEXT_COLUMN = "text"                  # or "masked_text" / "swapped_text"
+# INPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_1/llm_aug/train_aug_groups.csv"   # path to your training CSV
+# VAL_CSV   = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_1/val_subtask_1.csv" 
+# TEXT_COLUMN = "text"                
+# LABEL_COLUMN = "polarization"         # 0/1 column
+# OUTPUT_DIR = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_1/llm_aug_model"     
+
+INPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_1/masked/train_masked_subtask_1.csv"   # path to your training CSV
+VAL_CSV   = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_1/val_subtask_1.csv" 
+TEXT_COLUMN = "masked_text"                 
 LABEL_COLUMN = "polarization"         # 0/1 column
-OUTPUT_DIR = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/masked_model_uni_bi_gram_pmi"          # where to save final model
+OUTPUT_DIR = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_1/masked_model"          # where to save final model
 
 MODEL_NAME = "vinai/bertweet-base"    # HF model name
 MAX_LENGTH = 128
@@ -38,7 +45,7 @@ EVAL_BATCH_SIZE = 2
 WEIGHT_DECAY = 0.01
 WARMUP_RATIO = 0.1
 
-USE_CPU_ONLY = True                  # set True if you explicitly want no CUDA
+USE_CPU_ONLY = False                  # set True if you explicitly want no CUDA
 
 # ============================================================
 #                REPRODUCIBILITY HELPERS
@@ -103,30 +110,29 @@ def compute_metrics(eval_pred):
 def main():
     set_seed(RANDOM_SEED)
 
-    # ---------- Load data ----------
-    print(f"Loading data from: {INPUT_CSV}")
-    df = pd.read_csv(INPUT_CSV)
+    # ---------- Load training data ----------
+    print(f"Loading training data from: {INPUT_CSV}")
+    df_train = pd.read_csv(INPUT_CSV).dropna(subset=[TEXT_COLUMN, LABEL_COLUMN])
 
-    if TEXT_COLUMN not in df.columns:
-        raise ValueError(f"Column '{TEXT_COLUMN}' not found in CSV.")
-    if LABEL_COLUMN not in df.columns:
-        raise ValueError(f"Column '{LABEL_COLUMN}' not found in CSV.")
+    train_texts = df_train[TEXT_COLUMN].astype(str).tolist()
+    train_labels = df_train[LABEL_COLUMN].astype(int).tolist()
 
-    # Drop rows with missing text/label just in case
-    df = df.dropna(subset=[TEXT_COLUMN, LABEL_COLUMN])
+    # ---------- Load validation data ----------
+    print(f"Loading validation data from: {VAL_CSV}")
+    df_val = pd.read_csv(VAL_CSV)
 
-    texts = df[TEXT_COLUMN].astype(str).tolist()
-    labels = df[LABEL_COLUMN].astype(int).tolist()
+    if TEXT_COLUMN not in df_val.columns:
+        if "text" in df_val.columns:
+            df_val[TEXT_COLUMN] = df_val["text"]
+            print(f"VAL: '{TEXT_COLUMN}' not found, using 'text' instead.")
+        else:
+            raise ValueError(
+                f"Validation CSV must contain '{TEXT_COLUMN}' or a 'text' column."
+            )
 
-    # ---------- Train/validation split ----------
-    print("Splitting into train/validation sets...")
-    train_texts, val_texts, train_labels, val_labels = train_test_split(
-        texts,
-        labels,
-        test_size=TEST_SIZE,
-        random_state=RANDOM_SEED,
-        stratify=labels,  # important to preserve class balance
-    )
+    df_val = df_val.dropna(subset=[TEXT_COLUMN, LABEL_COLUMN])
+    val_texts = df_val[TEXT_COLUMN].astype(str).tolist()
+    val_labels = df_val[LABEL_COLUMN].astype(int).tolist()
 
     print(f"Train size: {len(train_texts)}")
     print(f"Val size:   {len(val_texts)}")

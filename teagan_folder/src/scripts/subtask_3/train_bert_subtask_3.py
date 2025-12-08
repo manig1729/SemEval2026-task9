@@ -19,12 +19,19 @@ from sklearn.metrics import f1_score, precision_score, recall_score
 #                   USER CONFIGURATION
 # ============================================================
 
-TRAIN_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_3/masked/train_subtask3_masked.csv" 
+# TRAIN_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_3/masked/train_subtask3_masked.csv" 
+# VAL_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_3/val_subtask_3.csv"
+
+# OUTPUT_DIR = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_3/subtask_3_model_masked"
+# TEXT_COLUMN = "text_masked"
+
+TRAIN_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_3/llm_aug/subtask2_train_llm_aug.csv" 
 VAL_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_3/val_subtask_3.csv"
 
-MODEL_NAME = "vinai/bertweet-base"
-OUTPUT_DIR = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_3/subtask_3_model_masked"
+OUTPUT_DIR = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_3/subtask_3_model_llm_aug"
+TEXT_COLUMN = "text"
 
+MODEL_NAME = "vinai/bertweet-base"
 BATCH_SIZE = 8
 NUM_EPOCHS = 3.0
 MAX_LENGTH = 256
@@ -119,6 +126,16 @@ def main():
     print(f"Loading validation data from: {VAL_CSV}")
     val_df = pd.read_csv(VAL_CSV)
 
+    if TEXT_COLUMN not in val_df.columns:
+        if "text" in val_df.columns:
+            val_df[TEXT_COLUMN] = val_df["text"]
+            print(f"VAL: '{TEXT_COLUMN}' not found, using 'text' column instead.")
+        else:
+            raise ValueError(
+                f"Validation CSV must contain '{TEXT_COLUMN}' "
+                f"or a 'text' column."
+            )
+
     for col in SUBTASK3_LABEL_COLS:
         if col not in train_df.columns:
             raise ValueError(f"Train CSV missing label column: {col}")
@@ -159,6 +176,7 @@ def main():
         metric_for_best_model="f1_macro",
         greater_is_better=True,
         logging_steps=50,
+        no_cuda=True,
     )
 
     trainer = Trainer(
