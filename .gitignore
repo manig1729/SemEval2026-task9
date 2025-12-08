@@ -1,6 +1,22 @@
-saved_model/
-*.bin
 *.json
-*.txt
 *.lock
 .venv/
+*.safetensors
+*.out
+data/
+
+# Ignore all HuggingFace/Transformer checkpoints
+**/checkpoint-*/optimizer.pt
+**/checkpoint-*/model.safetensors
+**/checkpoint-*/pytorch_model.bin
+
+# Ignore top-level model weights
+**/model.safetensors
+**/pytorch_model.bin
+
+# Ignore entire model output directories if desired
+teagan_folder/src/models/
+teagan_folder/src/output/subtasks_23/output/
+
+# Ignore temporary git pack files (often huge)
+.git/objects/pack/tmp_pack_*

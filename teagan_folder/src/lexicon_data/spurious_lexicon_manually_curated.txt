@@ -1,0 +1,96 @@
+#UNIGRAMS
+felon
+fuck
+agenda
+fascist
+kids
+let
+liberal
+genocidal
+stolen
+antisemitism
+full
+rigged
+racism
+hate
+hes
+shields
+nazis
+progressive
+nazi
+traitor
+mob
+musk
+woke
+feel
+literally
+radical
+using
+away
+apartheid
+everyone
+cleansing
+human
+ethnic
+being
+trumpism
+ukrainian
+enemy
+them
+talking
+shit
+fascism
+claim
+facts
+use
+elon
+always
+left
+care
+keep
+something
+because
+children
+xenophobia
+defund
+times
+nothing
+ok
+few
+white
+
+# BIGRAMS
+liberal agenda
+stolen election
+ukrainian nazis
+is just
+as human
+the radical
+the woke
+rigged election
+woke mob
+human shields
+the deep
+when the
+apartheid state
+is an
+a traitor
+voted for
+they are
+the election
+enemy of
+are the
+radical left
+of israel
+christian nationalism
+israel is
+trump is
+ethnic cleansing
+should be
+elon musk
+and his
+deep state
+to take
+an apartheid
+the people
+defund the

@@ -1,3 +1,4 @@
+import torch
 import pandas as pd
 import re
 import random
@@ -7,64 +8,56 @@ import random
 #                    USER CONFIGURATION
 # ============================================================
 
-INPUT_PATH = "/Users/tejo9855/Documents/Classes/Fall '25/NLP - Martin/Assignments/SemEval2026-task9/data/subtask1/train/eng.csv"
-OUTPUT_PATH = "/Users/tejo9855/Documents/Classes/Fall '25/NLP - Martin/Assignments/SemEval2026-task9/teagan_folder/src/output/train_masked.csv"
+INPUT_PATH = "/projects/tejo9855/Projects/SemEval2026-task9/data/subtask1/train/eng.csv"
+OUTPUT_PATH = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/preprocessed_train_data/train_masked_manually_curated_lexicon.csv"
 
 P_MASK = 0.5   # probability of masking each matched token
 MASK_TOKEN = "MASKED_TOKEN"
+LEXICON_PATH = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/lexicon_data/spurious_lexicon_manually_curated.txt" 
+
+def load_lexicon(path: str) -> list[str]:
+    """
+    Load a newline-separated lexicon file.
+    Ignores empty lines and lines starting with '#'.
+    """
+    terms = []
+    with open(path, "r", encoding="utf-8") as f:
+        for line in f:
+            term = line.strip()
+            if not term or term.startswith("#"):
+                continue
+            terms.append(term)
+    return terms
 
 
-# Your spurious regex patterns
-patterns_to_mask = [
-    # Political figures
-    r"\bdonald\s+trump\b|\btrump(s)?\b",
-    r"\bjoe\s+biden\b|\bbiden\b",
-    r"\bbarack\s+obama\b|\bobama\b",
-    r"\bhillary\s+clinton\b|\bclinton\b",
-    r"\bnancy\s+pelosi\b|\bpelosi\b",
-    r"\bchuck\s+schumer\b|\bschumer\b",
-    r"\bmitch\s+mcconnell\b|\bmcconnell\b",
-    r"\bkamala\s+harris\b|\bkamala\b",
-    r"\bmike\s+pence\b|\bpence\b",
-    r"\bron\s+desantis\b|\bdesantis\b",
+def build_regex_patterns(terms: list[str]) -> list[re.Pattern]:
+    """
+    Turn each lexicon term into a compiled regex pattern.
+    We:
+      - escape the term (so '.' etc are treated literally),
+      - wrap with word boundaries where appropriate,
+      - compile with IGNORECASE.
+    """
+    patterns = []
+    for term in terms:
+        escaped = re.escape(term)
 
-    # Political parties & ideologies
-    r"\bdemocrat(s)?\b",
-    r"\brepublican(s)?\b",
-    r"\bliberal(s)?\b",
-    r"\bconservative(s)?\b",
-    r"\bprogressive(s)?\b",
-    r"\bleftist(s)?\b",
-    r"\bright-?wing\b",
+        # Add word boundaries at edges if the term starts/ends with a word char.
+        # This keeps phrases like "black lives matter" working, but avoids
+        # partial matches inside words.
+        pattern_str = escaped
+        if re.match(r"\w", term[0]):
+            pattern_str = r"\b" + pattern_str
+        if re.match(r"\w", term[-1]):
+            pattern_str = pattern_str + r"\b"
 
-    # Countries & regions
-    r"\bisrael\b|\bpalestine\b|\bgaza\b|\biran\b|\bukraine\b|\brussia\b|\bchina\b|\btaiwan\b",
+        patterns.append(re.compile(pattern_str, flags=re.IGNORECASE))
+    return patterns
 
-    # Hot-button issues
-    r"\babortion\b",
-    r"\bgun(s)?\b",
-    r"\bimmigration\b|\bborder\b",
-    r"\bclimate\b",
-    r"\bcovid\b|\bvaccine(s)?\b|\bmask mandate\b",
 
-    # Movements & slogans
-    r"\bblm\b|\bblack\s+lives\s+matter\b",
-    r"\bmaga\b",
-    r"\bantifa\b",
-    r"\bwoke\b",
-    r"\bcancel\s+culture\b",
-    r"\bme\s+too\b",
-
-    # Media outlets
-    r"\bcnn\b",
-    r"\bfox\b|\bfox\s+news\b",
-    r"\bmsnbc\b",
-    r"\bbreitbart\b",
-    r"\bnytimes\b|\bnew\s+york\s+times\b|\bnyt\b",
-    r"\bwashington\s+post\b",
-    r"\btwitter\b|\bx\b",
-    r"\bfacebook\b"
-]
+# Build your patterns once at import time
+LEXICON_TERMS = load_lexicon(LEXICON_PATH)
+patterns_to_mask = build_regex_patterns(LEXICON_TERMS)
 
 
 # ============================================================
@@ -85,7 +78,7 @@ def mask_spurious_words(text, p=P_MASK):
     spans = []  # list of (start, end) intervals to mask
 
     for pattern in patterns_to_mask:
-        for match in re.finditer(pattern, text, flags=re.IGNORECASE):
+        for match in pattern.finditer(text):
             if random.random() < p:
                 spans.append((match.start(), match.end()))
 

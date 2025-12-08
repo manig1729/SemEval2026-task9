@@ -1,7 +1,7 @@
 import os
 import numpy as np
-import pandas as pd
 import torch
+import pandas as pd
 
 from transformers import (
     AutoTokenizer,
@@ -16,12 +16,12 @@ from transformers import (
 #                    USER CONFIGURATION
 # ============================================================
 
-MODEL_DIR = "/Users/tejo9855/Documents/Classes/Fall '25/NLP - Martin/Assignments/SemEval2026-task9/teagan_folder/src/models/masked_model"               # directory where you saved the model
-TEST_CSV = "/Users/tejo9855/Documents/Classes/Fall '25/NLP - Martin/Assignments/SemEval2026-task9/data/subtask1/dev/eng.csv"                # input test file
+MODEL_DIR = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/llm_aug_model"               # directory where you saved the model
+TEST_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/data/subtask1/dev/eng.csv"                # input test file
 ID_COLUMN = "id"                          # id column name in test CSV
 TEXT_COLUMN = "text"                      # text column name in test CSV
 
-OUTPUT_CSV = "/Users/tejo9855/Documents/Classes/Fall '25/NLP - Martin/Assignments/SemEval2026-task9/predictions/subtask_1/pred_eng.csv"     # SemEval submission file
+OUTPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/predictions/subtask_1/pred_eng.csv"     # SemEval submission file
 
 MAX_LENGTH = 128
 USE_CPU_ONLY = True                      # set True if you want to force CPU

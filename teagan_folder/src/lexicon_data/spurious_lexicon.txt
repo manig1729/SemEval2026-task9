@@ -1,0 +1,58 @@
+# Political figures
+donald trump
+trump
+joe biden
+biden
+barack obama
+obama
+hillary clinton
+clinton
+
+# Parties & ideologies
+democrat
+democrats
+republican
+republicans
+liberal
+liberals
+conservative
+conservatives
+progressive
+progressives
+leftist
+leftists
+right-wing
+right wing
+
+# Countries & regions
+israel
+palestine
+gaza
+iran
+ukraine
+russia
+china
+taiwan
+
+# Movements & slogans
+blm
+black lives matter
+maga
+antifa
+woke
+cancel culture
+me too
+
+# Media
+cnn
+fox
+fox news
+msnbc
+breitbart
+nytimes
+new york times
+nyt
+washington post
+twitter
+x
+facebook

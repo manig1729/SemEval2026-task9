@@ -18,7 +18,8 @@ print("START MAIN FILE")
 # ============================================================
 
 INPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/data/subtask1/train/eng.csv"
-OUTPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/train_aug_groups.csv"
+OUTPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/preprocessed_train_data/train_aug_groups.csv"
+LEXICON_PATH = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/lexicon_data/spurious_lexicon_pmi_only.txt"
 
 ID_COLUMN = "id"
 TEXT_COLUMN = "text"
@@ -40,59 +41,49 @@ ORIGINAL_ID_COLUMN = "original_id_map"
 #                   GROUP/ISSUE REGEX LEXICON
 # ============================================================
 
-patterns_to_match = [
-    # Political figures
-    r"\bdonald\s+trump\b|\btrump(s)?\b",
-    r"\bjoe\s+biden\b|\bbiden\b",
-    r"\bbarack\s+obama\b|\bobama\b",
-    r"\bhillary\s+clinton\b|\bclinton\b",
-    r"\bnancy\s+pelosi\b|\bpelosi\b",
-    r"\bchuck\s+schumer\b|\bschumer\b",
-    r"\bmitch\s+mcconnell\b|\bmcconnell\b",
-    r"\bkamala\s+harris\b|\bkamala\b",
-    r"\bmike\s+pence\b|\bpence\b",
-    r"\bron\s+desantis\b|\bdesantis\b",
+def load_lexicon(path: str) -> list[str]:
+    """
+    Load a newline-separated lexicon file.
+    Ignores empty lines and lines starting with '#'.
+    """
+    terms = []
+    with open(path, "r", encoding="utf-8") as f:
+        for line in f:
+            term = line.strip()
+            if not term or term.startswith("#"):
+                continue
+            terms.append(term)
+    return terms
 
-    # Political parties & ideologies
-    r"\bdemocrat(s)?\b",
-    r"\brepublican(s)?\b",
-    r"\bliberal(s)?\b",
-    r"\bconservative(s)?\b",
-    r"\bprogressive(s)?\b",
-    r"\bleftist(s)?\b",
-    r"\bright-?wing\b",
 
-    # Countries & regions
-    r"\bisrael\b|\bpalestine\b|\bgaza\b|\biran\b|\bukraine\b|\brussia\b|\bchina\b|\btaiwan\b",
+def build_regex_patterns(terms: list[str]) -> list[re.Pattern]:
+    """
+    Turn each lexicon term into a compiled regex pattern.
+    We:
+      - escape the term (so '.' etc are literal),
+      - add word boundaries at edges when appropriate,
+      - compile with IGNORECASE.
+    Works for both single words and multi-word phrases like
+    'black lives matter' or 'fox news'.
+    """
+    patterns = []
+    for term in terms:
+        escaped = re.escape(term)
 
-    # Hot-button issues
-    r"\babortion\b",
-    r"\bgun(s)?\b",
-    r"\bimmigration\b|\bborder\b",
-    r"\bclimate\b",
-    r"\bcovid\b|\bvaccine(s)?\b|\bmask mandate\b",
+        # Add word boundaries if the term begins/ends with a word char.
+        pattern_str = escaped
+        if re.match(r"\w", term[0]):
+            pattern_str = r"\b" + pattern_str
+        if re.match(r"\w", term[-1]):
+            pattern_str = pattern_str + r"\b"
 
-    # Movements & slogans
-    r"\bblm\b|\bblack\s+lives\s+matter\b",
-    r"\bmaga\b",
-    r"\bantifa\b",
-    r"\bwoke\b",
-    r"\bcancel\s+culture\b",
-    r"\bme\s+too\b",
+        patterns.append(re.compile(pattern_str, flags=re.IGNORECASE))
+    return patterns
 
-    # Media outlets
-    r"\bcnn\b",
-    r"\bfox\b|\bfox\s+news\b",
-    r"\bmsnbc\b",
-    r"\bbreitbart\b",
-    r"\bnytimes\b|\bnew\s+york\s+times\b|\bnyt\b",
-    r"\bwashington\s+post\b",
-    r"\btwitter\b|\bx\b",
-    r"\bfacebook\b",
-]
 
-# Precompile regex for efficiency
-compiled_patterns = [re.compile(p, flags=re.IGNORECASE) for p in patterns_to_match]
+# Build patterns at import time
+LEXICON_TERMS = load_lexicon(LEXICON_PATH)
+compiled_patterns = build_regex_patterns(LEXICON_TERMS)
 
 
 # ============================================================
@@ -185,7 +176,7 @@ def find_group_mentions(text: str) -> List[str]:
     return sorted(mentions)
 
 
-POLARIZATION_EXPLANATION = """
+POLARIZATION_DEFINITION = """
 We are studying polarization in social media posts.
 
 - A "polarized" post clearly expresses a strong, divisive attitude or opinion,
@@ -194,26 +185,12 @@ We are studying polarization in social media posts.
 - Here, all original posts you will see are labeled as POLARIZED (1).
 """.strip()
 
-NON_POLARIZATION_EXPLANATION = """
-We are studying non-polarized variants of polarized social media posts.
-
-- A "non-polarized" post does NOT clearly express a strong, divisive attitude
-  or opinion.
-- It avoids strong "us vs them" dynamics and aggressive attacks.
-- It may still discuss the same topics and groups, but in a neutral, descriptive,
-  or balanced way.
-""".strip()
-
 
 def build_polarized_prompt(text: str, mentions: List[str], n_aug: int) -> str:
-    """
-    Given a POLARIZED original post, ask the LLM for n_aug new POLARIZED posts
-    with different but comparable groups.
-    """
     mentions_str = ", ".join(f'"{m}"' for m in mentions) if mentions else "none"
 
     prompt = f"""
-        {POLARIZATION_EXPLANATION}
+        {POLARIZATION_DEFINITION}
 
         You will be given a social media post that is labeled as POLARIZED (1).
         It expresses a strong, divisive attitude.
@@ -235,7 +212,7 @@ def build_polarized_prompt(text: str, mentions: List[str], n_aug: int) -> str:
              - If the original talks about one country, you may switch to another country
                in a similar geopolitical context.
           3. The intensity of polarization should remain similar (don't make it neutral).
-          4. Do NOT copy the original sentences; produce genuinely rephrased posts.
+          4. Do NOT copy the original sentences; produce genuinely rephrased posts following the same syntactical structure.
           5. Do NOT mention exactly the same groups/entities as in the original.
           6. Do NOT add explanations; only return JSON.
 
@@ -253,16 +230,10 @@ def build_polarized_prompt(text: str, mentions: List[str], n_aug: int) -> str:
 
 
 def build_nonpolarized_prompt(text: str, mentions: List[str], n_aug: int) -> str:
-    """
-    Given a POLARIZED original post, ask the LLM for n_aug NON-POLARIZED variants:
-    - same general topic
-    - no strong us-vs-them or harsh attacks
-    - optionally with different but comparable groups.
-    """
     mentions_str = ", ".join(f'"{m}"' for m in mentions) if mentions else "none"
 
     prompt = f"""
-        {NON_POLARIZATION_EXPLANATION}
+        {POLARIZATION_DEFINITION}
 
         You will be given a social media post that is labeled as POLARIZED (1),
         meaning it expresses a strong, divisive attitude.
@@ -278,13 +249,10 @@ def build_nonpolarized_prompt(text: str, mentions: List[str], n_aug: int) -> str
           1. Are clearly NON-POLARIZED (neutral, balanced, or mildly opinionated).
           2. Should NOT frame a strong "us vs them" conflict or use aggressive, hostile language.
           3. Stay roughly on the same topic as the original.
-          4. May still mention social or political groups, parties, countries, etc.,
+          4. Mention the groups found ([{mentions_str}]),
              but only in a descriptive, informational, or balanced way.
-          5. You may either:
-             - keep the same groups but soften the tone, OR
-             - switch to DIFFERENT BUT SOCIALLY COMPARABLE groups in a neutral tone.
-          6. Do NOT copy the original sentences; produce genuinely rephrased posts.
-          7. Do NOT add explanations; only return JSON.
+          5. Do NOT copy the original sentences; produce genuinely rephrased posts that may have syntactically different structure.
+          6. Do NOT add explanations; only return JSON.
 
         Output format (valid JSON):
         {{
