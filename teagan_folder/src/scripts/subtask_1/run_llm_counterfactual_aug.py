@@ -12,14 +12,13 @@ from transformers import (
     BitsAndBytesConfig,
 )
 
-print("START MAIN FILE")
 # ============================================================
 #                     USER CONFIGURATION
 # ============================================================
 
-INPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/data/subtask1/train/eng.csv"
-OUTPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/preprocessed_train_data/train_aug_groups.csv"
-LEXICON_PATH = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/lexicon_data/spurious_lexicon_pmi_only.txt"
+INPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_1/train_subtask_1.csv"
+OUTPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_1/llm_aug/train_aug_groups.csv"
+LEXICON_PATH = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/lexicon_data/spurious_lexicon_manually_curated.txt"
 
 ID_COLUMN = "id"
 TEXT_COLUMN = "text"

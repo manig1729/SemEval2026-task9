@@ -8,8 +8,8 @@ import random
 #                    USER CONFIGURATION
 # ============================================================
 
-INPUT_PATH = "/projects/tejo9855/Projects/SemEval2026-task9/data/subtask1/train/eng.csv"
-OUTPUT_PATH = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/preprocessed_train_data/train_masked_manually_curated_lexicon.csv"
+INPUT_PATH = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_1/train_subtask_1.csv"
+OUTPUT_PATH = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_1/masked/train_masked_subtask_1.csv"
 
 P_MASK = 0.5   # probability of masking each matched token
 MASK_TOKEN = "MASKED_TOKEN"

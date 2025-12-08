@@ -6,7 +6,7 @@
 #SBATCH --partition=blanca-clearlab1
 #SBATCH --qos=blanca-clearlab1
 #SBATCH --gres=gpu:1
-#SBATCH --output=job_logs/create_llm_df_output-%j.out
+#SBATCH --output=job_logs/create_blindness_df_output-%j.out
 #SBATCH --time=00:30:00
 
 # 1. Changing to project directory
@@ -26,4 +26,4 @@ conda activate teagan-conda-env-curc
 # mkdir -p models/ results/ metadata/
 
 # 6. Run python script
-python src/scripts/run_llm_counterfactual_aug.py
+python src/scripts/subtask_1/create_masked_df.py

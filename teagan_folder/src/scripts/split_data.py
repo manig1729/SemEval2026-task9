@@ -7,12 +7,12 @@ from sklearn.model_selection import train_test_split
 #                 USER CONFIGURATION
 # ============================================================
 
-TASK = 2
+TASK = 3
 INPUT_CSV = f"/projects/tejo9855/Projects/SemEval2026-task9/data/subtask{TASK}/train/eng.csv"
 
-TRAIN_OUT = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/subtasks_23/output/train_subtask{TASK}.csv"
-VAL_OUT   = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/subtasks_23/output/val_subtask{TASK}.csv"
-TEST_OUT  = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/subtasks_23/output/test_subtask{TASK}.csv"
+TRAIN_OUT = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_{TASK}/train_subtask_{TASK}.csv"
+VAL_OUT   = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_{TASK}/val_subtask_{TASK}.csv"
+TEST_OUT  = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_{TASK}/test_subtask_{TASK}.csv"
 
 # Percentages for splitting (must sum to 1.0 or less — remaining goes to train)
 TRAIN_RATIO = 0.8

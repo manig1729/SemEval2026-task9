@@ -19,11 +19,11 @@ from sklearn.metrics import f1_score, precision_score, recall_score
 #                   USER CONFIGURATION
 # ============================================================
 
-TRAIN_CSV = "/path/to/subtask3_train_processed.csv"  # can be masked/augmented
-VAL_CSV = "/path/to/subtask3_dev_processed.csv"
+TRAIN_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_3/masked/train_subtask3_masked.csv" 
+VAL_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_3/val_subtask_3.csv"
 
-MODEL_NAME = "bert-base-uncased"
-OUTPUT_DIR = "/path/to/output/subtask3_bert"
+MODEL_NAME = "vinai/bertweet-base"
+OUTPUT_DIR = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_3/subtask_3_model_masked"
 
 BATCH_SIZE = 8
 NUM_EPOCHS = 3.0
@@ -34,7 +34,7 @@ SUBTASK3_LABEL_COLS = [
     "vilification",
     "dehumanization",
     "extreme_language",
-    "lack_empathy",
+    "lack_of_empathy",
     "invalidation",
 ]
 

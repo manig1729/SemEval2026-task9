@@ -11,10 +11,10 @@ import random
 # ============================================================
 
 # Set which subtask this file is for: 2 or 3
-TASK = 2  # change to 3 for subtask 3
+TASK = 3
 
-INPUT_CSV = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/subtasks_23/output/train_subtask{TASK}.csv"
-OUTPUT_CSV = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/subtasks_23/output/train_subtask{TASK}_masked.csv"
+INPUT_CSV = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_{TASK}/train_subtask_{TASK}.csv"
+OUTPUT_CSV = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_{TASK}/masked/train_subtask{TASK}_masked.csv"
 
 LEXICON_PATH = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/lexicon_data/spurious_lexicon_manually_curated.txt"
 MASK_TOKEN = "MASKED_TOKEN"

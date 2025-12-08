@@ -13,18 +13,18 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 #                   USER CONFIGURATION
 # ============================================================
 
-INPUT_CSV = "/path/to/subtask2_train.csv"
-OUTPUT_CSV = "/path/to/subtask2_train_llm_aug.csv"
+INPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_2/train_subtask2.csv"
+OUTPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_2/llm_aug/subtask2_train_llm_aug.csv"
 
-LEXICON_PATH = "/path/to/spurious_lexicon.txt"
-N_AUG_PER_EXAMPLE = 1  # how many augmented variants to generate per example
+LEXICON_PATH = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/lexicon_data/spurious_lexicon_manually_curated.txt"
+N_AUG_PER_EXAMPLE = 2  # how many augmented variants to generate per example
 
 # Label columns for subtask 2
 SUBTASK2_LABEL_COLS = [
     "political",
-    "racial_ethnic",
+    "racial/ethnic",
     "religious",
-    "gender_sexual",
+    "gender/sexual",
     "other",
 ]
 
