@@ -8,8 +8,8 @@ from torch.utils.data import Dataset
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, Trainer, TrainingArguments
 from sklearn.metrics import f1_score
 
-MODEL_NAME = "masked"
-# MODEL_NAME = "llm_aug"
+# MODEL_NAME = "masked"
+MODEL_NAME = "llm_aug"
 # MODEL_NAME = "base"
 
 MODEL_DIR = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_3/{MODEL_NAME}_model"

@@ -17,8 +17,8 @@ from sklearn.metrics import f1_score, precision_score, recall_score
 #               USER SETTINGS (EDIT THESE ONLY)
 # ==============================================================
 
-MODEL_NAME = "masked"
-# MODEL_NAME = "llm_aug"
+# MODEL_NAME = "masked"
+MODEL_NAME = "llm_aug"
 # MODEL_NAME = "base"
 
 MODEL_DIR = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_3/{MODEL_NAME}_model"
@@ -60,13 +60,13 @@ elif MODEL_NAME == "masked":
     }
 else:
     PER_LABEL_THRESHOLDS = {
-        "stereotype": 0.05,
+        "stereotype": 0.1,
         "vilification": 0.1,
-        "dehumanization": 0.25,
-        "extreme_language": 0.35,
-        "lack_of_empathy": 0.25,
-        "invalidation": 0.1
-    }
+        "dehumanization": 0.15,
+        "extreme_language": 0.1,
+        "lack_of_empathy": 0.05,
+        "invalidation": 0.15
+        }
 
 
 # ==============================================================

@@ -56,12 +56,12 @@ elif MODEL_NAME == "masked":
     }
 else:
     PER_LABEL_THRESHOLDS = {
-        "political": 0.15,
-        "racial/ethnic": 0.39999999999999997,
-        "religious": 0.2,
+        "political": 0.3,
+        "racial/ethnic": 0.2,
+        "religious": 0.39999999999999997,
         "gender/sexual": 0.05,
-        "other": 0.25
-    }
+        "other": 0.05
+        }
 
 # ==============================================================
 #                           DATASET

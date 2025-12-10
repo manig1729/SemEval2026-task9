@@ -24,8 +24,8 @@ from sklearn.metrics import f1_score, precision_score, recall_score
 # ============================================================
 
 # MODEL_NAME = "masked"
-# MODEL_NAME = "llm_aug"
-MODEL_NAME = "base"
+MODEL_NAME = "llm_aug"
+# MODEL_NAME = "base"
 
 TRAIN_CSV = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_2/{MODEL_NAME}/train_{MODEL_NAME}.csv" 
 VAL_CSV   = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_2/val_subtask_2.csv" 

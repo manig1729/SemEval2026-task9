@@ -15,11 +15,17 @@ from transformers import (
 #               USER SETTINGS (EDIT THESE ONLY)
 # ==============================================================
 
-MODEL_DIR = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_2/subtask_2_model_masked"  
-TEST_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/data/subtask2/dev/eng.csv"   
-OUTPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/predictions/subtask_2/pred_eng_masked.csv"
+MODEL_NAME = "masked"
+# MODEL_NAME = "llm_aug"
+# MODEL_NAME = "base"
 
-MAX_LENGTH = 256
+MODEL_DIR = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_2/{MODEL_NAME}_model"
+TEST_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/data/subtask2/dev/eng.csv"
+
+OUTPUT_CSV = f"/projects/tejo9855/Projects/SemEval2026-task9/predictions/subtask_2/pred_{MODEL_NAME}.csv"
+METRICS_JSON = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/subtask_2/metrics_{MODEL_NAME}.json"
+
+MAX_LENGTH = 128
 BATCH_SIZE = 16
 
 SUBTASK2_LABEL_COLS = [
@@ -30,14 +36,30 @@ SUBTASK2_LABEL_COLS = [
     "other",
 ]
 
-PER_LABEL_THRESHOLDS = {
-    "political": 0.5,
-    "racial/ethnic": 0.4,
-    "religious": 0.55,
-    "gender/sexual": 0.05,
-    "other": 0.1,
-}
-
+if MODEL_NAME == "base":
+    PER_LABEL_THRESHOLDS = {
+        "political": 0.15,
+        "racial/ethnic": 0.25,
+        "religious": 0.1,
+        "gender/sexual": 0.05,
+        "other": 0.05
+    }
+elif MODEL_NAME == "masked":
+    PER_LABEL_THRESHOLDS = {
+        "political": 0.1,
+        "racial/ethnic": 0.25,
+        "religious": 0.2,
+        "gender/sexual": 0.05,
+        "other": 0.2
+    }
+else:
+    PER_LABEL_THRESHOLDS = {
+        "political": 0.3,
+        "racial/ethnic": 0.2,
+        "religious": 0.39999999999999997,
+        "gender/sexual": 0.05,
+        "other": 0.05
+        }
 
 
 # ==============================================================

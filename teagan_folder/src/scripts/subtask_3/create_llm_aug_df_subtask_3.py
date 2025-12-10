@@ -13,11 +13,11 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 #                   USER CONFIGURATION
 # ============================================================
 
-INPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_3/train_subtask_3.csv"
-OUTPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_3/llm_aug/subtask3_train_llm_aug.csv"
+INPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_3/base/train_base.csv"
+OUTPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_3/llm_aug/train_llm_aug.csv"
 
 LEXICON_PATH = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/lexicon_data/spurious_lexicon_manually_curated.txt"
-N_AUG_PER_EXAMPLE = 2
+N_AUG_PER_EXAMPLE = 1
 
 # Label columns for subtask 3
 SUBTASK3_LABEL_COLS = [
@@ -102,33 +102,84 @@ def generate_augmented_texts(
     n_aug: int = 1,
     max_new_tokens: int = 128,
 ) -> List[str]:
-    """
-    Generate counterfactual versions that keep the same manifestations
-    (e.g., stereotype, vilification) but swap specific target groups.
-    """
-    prompt = (
-        "You are helping create counterfactual training data for polarization manifestation classification.\n"
-        "Given the following sentence, generate alternative versions that preserve the same type and intensity\n"
-        "of polarization (e.g., stereotypes, vilification, dehumanization), but replace the target group with\n"
-        "different but comparable groups.\n\n"
-        f"Original sentence:\n{text}\n\n"
-        f"Generate {n_aug} alternative versions, one per line."
+
+    system_msg = (
+        "You generate counterfactual training data for polarization type classification.\n"
+        "Given a sentence, you rewrite it so that it preserves the same meaning and "
+        "polarization type, but replaces references to specific countries, political groups, "
+        "or identity groups with different but comparable groups.\n\n"
+        "STRICT OUTPUT RULES:\n"
+        "- Return ONLY the rewritten sentence.\n"
+        "- Do NOT provide any explanation or commentary.\n"
+        "- Do NOT number or bullet the output.\n"
+        "- Output MUST be a single line of text.\n"
     )
 
-    inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+    user_msg = (
+        "Rewrite the following sentence according to the rules:\n\n"
+        f"{text}"
+    )
+
+    messages = [
+        {"role": "system", "content": system_msg},
+        {"role": "user", "content": user_msg},
+    ]
+
+    # Build chat-formatted input
+    model_inputs = tokenizer.apply_chat_template(
+        messages,
+        tokenize=True,
+        add_generation_prompt=True,
+        return_tensors="pt",
+    ).to(model.device)
+
     with torch.no_grad():
         outputs = model.generate(
-            **inputs,
+            model_inputs,
             max_new_tokens=max_new_tokens,
             do_sample=True,
             top_p=0.9,
             temperature=0.8,
+            num_return_sequences=n_aug,
         )
 
-    full_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
-    generated_part = full_text[len(prompt):].strip()
-    lines = [l.strip() for l in generated_part.split("\n") if l.strip()]
-    return lines[:n_aug]
+    generated_texts: List[str] = []
+
+    # model_inputs.shape[1] = length of the prompt in tokens
+    prompt_len = model_inputs.shape[1]
+
+    for i in range(n_aug):
+        output_ids = outputs[i]
+
+        # Keep only tokens generated *after* the prompt
+        gen_ids = output_ids[prompt_len:]
+
+        decoded = tokenizer.decode(gen_ids, skip_special_tokens=True)
+
+        # --- Post-processing to kill explanations / extra junk ---
+
+        # 1) Take only up to the first newline (model sometimes adds extra lines)
+        line = decoded.split("\n", 1)[0].strip()
+
+        # # 2) Optionally trim at common hallucinated markers (if they ever appear)
+        # for stop_token in ["</OUTPUT>", "</output>", "<END>", "Explanation:"]:
+        #     if stop_token in line:
+        #         line = line.split(stop_token, 1)[0].strip()
+
+        # # 3) Optionally enforce "first sentence only" behavior
+        # # If the model sometimes generates multiple sentences, uncomment this:
+        # # if "." in line:
+        # #     first = line.split(".", 1)[0].strip()
+        # #     if first:  # keep trailing period if it seems like a real sentence
+        # #         line = first + "."
+
+        # Final cleanup
+        line = line.strip()
+
+        if line:
+            generated_texts.append(line)
+
+    return generated_texts
 
 
 # ============================================================
