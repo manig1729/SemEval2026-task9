@@ -25,10 +25,10 @@ from transformers import (
 MODEL_NAME = "llm_aug"
 # MODEL_NAME = "base"
 
-INPUT_CSV = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_1/{MODEL_NAME}/train_{MODEL_NAME}.csv" 
-VAL_CSV   = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_1/val_subtask_1.csv" 
+INPUT_CSV = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_1_test/{MODEL_NAME}/train_{MODEL_NAME}.csv" 
+VAL_CSV   = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_1_test/val_subtask_1.csv" 
           
-OUTPUT_DIR = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_1/{MODEL_NAME}_model"
+OUTPUT_DIR = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_1_test/{MODEL_NAME}_model"
 if MODEL_NAME == "masked":
     TEXT_COLUMN = "masked_text"      
 else:

@@ -15,15 +15,15 @@ from transformers import (
 #               USER SETTINGS (EDIT THESE ONLY)
 # ==============================================================
 
-MODEL_NAME = "masked"
-# MODEL_NAME = "llm_aug"
+# MODEL_NAME = "masked"
+MODEL_NAME = "llm_aug"
 # MODEL_NAME = "base"
 
-MODEL_DIR = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_3/{MODEL_NAME}_model"
-TEST_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/data/subtask3/dev/eng.csv"
+MODEL_DIR = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_3_test/{MODEL_NAME}_model"
+TEST_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/data/test_phase/subtask3/test/eng.csv"
 
-OUTPUT_CSV = f"//projects/tejo9855/Projects/SemEval2026-task9/predictions/subtask_3/pred_{MODEL_NAME}.csv"
-METRICS_JSON = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/subtask_3/metrics_{MODEL_NAME}.json"
+OUTPUT_CSV = f"//projects/tejo9855/Projects/SemEval2026-task9/predictions/subtask_3_test/pred_{MODEL_NAME}.csv"
+METRICS_JSON = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/subtask_3_test/metrics_{MODEL_NAME}.json"
 
 
 MAX_LENGTH = 128
@@ -58,12 +58,12 @@ elif MODEL_NAME == "masked":
     }
 else:
     PER_LABEL_THRESHOLDS = {
-        "stereotype": 0.1,
-        "vilification": 0.1,
-        "dehumanization": 0.15,
-        "extreme_language": 0.1,
-        "lack_of_empathy": 0.05,
-        "invalidation": 0.15
+        "stereotype": 0.15,
+        "vilification": 0.49999999999999994,
+        "dehumanization": 0.35,
+        "extreme_language": 0.39999999999999997,
+        "lack_of_empathy": 0.1,
+        "invalidation": 0.35
         }
 
 

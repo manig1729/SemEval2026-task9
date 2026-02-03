@@ -7,7 +7,7 @@
 #SBATCH --qos=blanca-clearlab1
 #SBATCH --gres=gpu:1
 #SBATCH --output=job_logs/create_llm_df_subtask_2_output-%j.out
-#SBATCH --time=03:00:00
+#SBATCH --time=04:00:00
 
 # 1. Changing to project directory
 cd /projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/

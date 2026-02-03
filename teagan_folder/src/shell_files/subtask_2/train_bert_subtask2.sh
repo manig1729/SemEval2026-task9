@@ -19,11 +19,5 @@ module load cuda/12.1.1
 # 3. Loading conda environment
 conda activate teagan-conda-env-curc
 
-# 4. Loading python environment
-# source addiction_venv/bin/python
-
-# # 5. Setting up directories
-# mkdir -p models/ results/ metadata/
-
 # 6. Run python script
 python src/scripts/subtask_2/train_bert_subtask_2.py

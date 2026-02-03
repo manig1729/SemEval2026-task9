@@ -15,15 +15,15 @@ from transformers import (
 #               USER SETTINGS (EDIT THESE ONLY)
 # ==============================================================
 
-MODEL_NAME = "masked"
-# MODEL_NAME = "llm_aug"
+# MODEL_NAME = "masked"
+MODEL_NAME = "llm_aug"
 # MODEL_NAME = "base"
 
-MODEL_DIR = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_2/{MODEL_NAME}_model"
-TEST_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/data/subtask2/dev/eng.csv"
+MODEL_DIR = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_2_test/{MODEL_NAME}_model"
+TEST_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/data/test_phase/subtask2/test/eng.csv"
 
-OUTPUT_CSV = f"/projects/tejo9855/Projects/SemEval2026-task9/predictions/subtask_2/pred_{MODEL_NAME}.csv"
-METRICS_JSON = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/subtask_2/metrics_{MODEL_NAME}.json"
+OUTPUT_CSV = f"/projects/tejo9855/Projects/SemEval2026-task9/predictions/subtask_2_test/pred_{MODEL_NAME}.csv"
+METRICS_JSON = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/subtask_2_test/metrics_{MODEL_NAME}.json"
 
 MAX_LENGTH = 128
 BATCH_SIZE = 16
@@ -54,9 +54,9 @@ elif MODEL_NAME == "masked":
     }
 else:
     PER_LABEL_THRESHOLDS = {
-        "political": 0.3,
-        "racial/ethnic": 0.2,
-        "religious": 0.39999999999999997,
+        "political": 0.25,
+        "racial/ethnic": 0.25,
+        "religious": 0.25,
         "gender/sexual": 0.05,
         "other": 0.05
         }

@@ -12,9 +12,9 @@ from sklearn.metrics import f1_score
 MODEL_NAME = "llm_aug"
 # MODEL_NAME = "base"
 
-MODEL_DIR = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_2/{MODEL_NAME}_model"
-DEV_CSV  = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_2/val_subtask_2.csv"
-THRESHOLDS_DIR = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/subtask_2/per_label_thresholds_{MODEL_NAME}.json"
+MODEL_DIR = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/models/subtask_2_test/{MODEL_NAME}_model"
+DEV_CSV  = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_2_test/val_subtask_2.csv"
+THRESHOLDS_DIR = f"/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/output/subtask_2_test/per_label_thresholds_{MODEL_NAME}.json"
 
 MAX_LENGTH = 256
 BATCH_SIZE = 16

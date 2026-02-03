@@ -16,16 +16,16 @@ from transformers import (
 #                     USER CONFIGURATION
 # ============================================================
 
-INPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_1/train_subtask_1.csv"
-OUTPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_1/llm_aug/train_aug_groups.csv"
+INPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_1_test/base/train_base.csv"
+OUTPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_1_test/llm_aug/train_aug_groups.csv"
 LEXICON_PATH = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/lexicon_data/spurious_lexicon_manually_curated.txt"
 
 ID_COLUMN = "id"
 TEXT_COLUMN = "text"
 LABEL_COLUMN = "polarization"                # 0/1 column
 
-N_AUG_PER_EXAMPLE = 3                        # how many variants per example
-MAX_EXAMPLES = 100                           # max polarized+matched rows to augment (for speed/cost); None = all
+N_AUG_PER_EXAMPLE = 2                        # how many variants per example
+MAX_EXAMPLES = 1000                           # max polarized+matched rows to augment (for speed/cost); None = all
 RANDOM_SEED = 42
 
 MAX_NEW_TOKENS = 256

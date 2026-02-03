@@ -13,11 +13,11 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 #                   USER CONFIGURATION
 # ============================================================
 
-INPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_3/base/train_base.csv"
-OUTPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_3/llm_aug/train_llm_aug.csv"
+INPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_3_test/base/train_base.csv"
+OUTPUT_CSV = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/preprocessed_data/subtask_3_test/llm_aug/train_llm_aug.csv"
 
 LEXICON_PATH = "/projects/tejo9855/Projects/SemEval2026-task9/teagan_folder/src/lexicon_data/spurious_lexicon_manually_curated.txt"
-N_AUG_PER_EXAMPLE = 1
+N_AUG_PER_EXAMPLE = 2
 
 # Label columns for subtask 3
 SUBTASK3_LABEL_COLS = [
